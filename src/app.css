@@ -1,0 +1,46 @@
+body{
+  overflow: scroll;
+}
+
+:root {
+  --bs-danger: #e92228;
+  --bs-warning: gold;
+  --bs-success: green;
+}
+
+.site {
+  display: flex;
+  min-height: 98vh;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1;
+}
+
+.btn-danger, .alert-danger {
+  background-color: var(--bs-danger);
+}
+
+.btn-warning, .alert-warning {
+  background-color: var(--bs-warning);
+}
+
+.btn-success, .alert-success {
+  background-color: var(--bs-success);
+}
+
+.alert-danger {
+  color: white;
+  border-color: var(--bs-danger);
+}
+
+.alert-warning {
+  color: #333;
+  border-color: var(--bs-warning)
+}
+
+.alert-success {
+  color: white;
+  border-color: var(--bs-success)
+}

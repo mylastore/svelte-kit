@@ -1,0 +1,11 @@
+.DS_Store
+node_modules
+/.svelte
+/functions
+.env
+.idea
+/.idea/
+.svelte-kit
+package-lock.json
+production.env
+build

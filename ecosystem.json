@@ -1,0 +1,10 @@
+{
+  "apps": [
+    {
+      "name": "app",
+      "script": "PORT=3000 node build",
+      "instances": 1,
+      "exec_mode": "fork"
+    }
+  ]
+}
