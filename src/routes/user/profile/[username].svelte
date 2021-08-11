@@ -51,7 +51,6 @@
     try {
       const res = await api('GET', `user/profile/${username}`, {}, token)
       if (res.status >= 400) {
-        console.log(res)
         throw new Error(res.message)
       }
       isLoading = false
