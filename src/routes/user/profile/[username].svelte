@@ -121,9 +121,9 @@
       isLoading = false
       if (newUsername) {
         $session.user.username = newUsername
-        await goto(`/profile/${newUsername}`)
-        window.location.reload(`/profile/${newUsername}`)
+        window.location.reload(`/user/profile/${newUsername}`)
       } else {
+        await goto(`/user/profile/${newUsername}`)
         notifications.push('User profile was updated!', 'success')
       }
     } catch (err) {

@@ -2,7 +2,7 @@
   "name": "sveltekit",
   "version": "0.0.2",
   "scripts": {
-    "start": "svelte-kit dev -p 3000",
+    "start": "svelte-kit dev -p 3001",
     "build": "svelte-kit build",
     "live": "PORT=3001 node build",
     "production": "pm2 start ecosystem.json",

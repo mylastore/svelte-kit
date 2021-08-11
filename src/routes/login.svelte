@@ -1,5 +1,5 @@
 <script context='module'>
-  export async function load ({ session }) {
+  export async function load({session}) {
     if (session.authenticated) {
       return {
         status: 302,
@@ -12,10 +12,11 @@
 
 <script>
   import Input from '$lib/Input.svelte'
-  import { isEmail, isPassword } from '$lib/utils/validation'
-  import { api } from '$lib/utils/api'
-  import { authenticate } from '$lib/utils/auth'
-  import { notifications } from '$lib/Noti.svelte'
+  import {isEmail, isPassword} from '$lib/utils/validation'
+  import {api} from '$lib/utils/api'
+  import {authenticate} from '$lib/utils/auth'
+  import {notifications} from '$lib/Noti.svelte'
+
 
   let email = ''
   let password = ''
@@ -24,7 +25,7 @@
   $: passwordValid = isPassword(password)
   $: formIsValid = emailValid && passwordValid
 
-  async function submitForm (e) {
+  async function submitForm(e) {
     e.preventDefault()
     const data = {
       email,
@@ -44,7 +45,7 @@
     }
   }
 
-  function handleKeyDown (e) {
+  function handleKeyDown(e) {
     if (formIsValid) {
       if (e.keyCode === 13) {
         submitForm(e)
@@ -70,24 +71,24 @@
           <p>We are glad you are here.</p>
           <div>
             <Input
-              id='email'
-              label='Email'
-              valid={emailValid}
-              validityMessage='Please enter a valid email.'
-              value={email}
-              className='is-large'
-              on:input={(event) => (email = event.target.value)}
+                id='email'
+                label='Email'
+                valid={emailValid}
+                validityMessage='Please enter a valid email.'
+                value={email}
+                className='is-large'
+                on:input={(event) => (email = event.target.value)}
             />
             <Input
-              id='password'
-              label='Password'
-              help="Password minimum length 8, must have one capital letter, 1 number, and one unique character."
-              type='password'
-              valid={passwordValid}
-              validityMessage='Please enter a valid password.'
-              value={password}
-              className='is-large'
-              on:input={(event) => (password = event.target.value)}
+                id='password'
+                label='Password'
+                help="Password minimum length 8, must have one capital letter, 1 number, and one unique character."
+                type='password'
+                valid={passwordValid}
+                validityMessage='Please enter a valid password.'
+                value={password}
+                className='is-large'
+                on:input={(event) => (password = event.target.value)}
             />
           </div>
           <div>
@@ -97,11 +98,11 @@
           </div>
           <div class="d-grid gap-2">
             <button
-              aria-disabled={!formIsValid ? 'true' : 'false'}
-              class='btn btn-primary btn-lg'
-              on:click={submitForm}
-              class:disabled={!formIsValid}
-              disabled={!formIsValid}>
+                aria-disabled={!formIsValid ? 'true' : 'false'}
+                class='btn btn-primary btn-lg'
+                on:click={submitForm}
+                class:disabled={!formIsValid}
+                disabled={!formIsValid}>
               Sing In
             </button>
           </div>
