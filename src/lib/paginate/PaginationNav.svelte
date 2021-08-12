@@ -2,6 +2,7 @@
 	import generateNavigationOptions from './generateNavigationOptions'
 	import { createEventDispatcher } from 'svelte'
 	import { PREVIOUS_PAGE, NEXT_PAGE, ELLIPSIS } from './symbolTypes'
+	import {ChevronLeftIcon, ChevronRightIcon} from 'svelte-feather-icons'
 
 	const dispatch = createEventDispatcher()
 
@@ -10,6 +11,7 @@
 	export let currentPage = 1
 	export let limit = null
 	export let showStepOptions = false
+
 	export const setPage = (page) => {
 		currentPage = page
 	}
@@ -48,7 +50,7 @@
 							currentPage >= totalPages) ||
 							(option.type === 'symbol' && option.symbol === PREVIOUS_PAGE && currentPage <= 1)}
 					>
-						<span class="page-link">Previous</span>
+						<span class="page-link"><ChevronLeftIcon size="1x" /></span>
 					</li>
 				</slot>
 			{/if}
@@ -87,7 +89,7 @@
 							(option.type === 'symbol' && option.symbol === PREVIOUS_PAGE && currentPage <= 1)}
 						on:click|preventDefault={() => handleOptionClick(option)}
 					>
-						<span class="page-link">Next</span>
+						<span class="page-link"><ChevronRightIcon size="1x"/></span>
 					</li>
 				</slot>
 			{/if}
