@@ -104,11 +104,6 @@
                                 </li>
                             {/if}
                             <li>
-                                <a class='dropdown-item a-link' class:active={$page.path === '/support'} href='/support'
-                                >Support</a
-                                >
-                            </li>
-                            <li>
                                 <hr class='dropdown-divider'/>
                             </li>
                             <li><a class='dropdown-item a-link' on:click|preventDefault={logOut} href='#'>Logout</a>
