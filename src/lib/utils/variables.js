@@ -1,5 +1,5 @@
 export const variables = {
-	env: 'development',
+	env: 'production',
 	apiDevPath: 'http://localhost:8001/api',
 	apiLivePath: 'https://papaslive.com/api',
 	appName: 'SVELTE KIT',
