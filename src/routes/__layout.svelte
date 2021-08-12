@@ -18,7 +18,6 @@
 			<a href="/"><strong>&copy {year} {variables.appName}. All rights reserved</strong></a><br>
 			The source code is open source -  <a href="https://mylastore.com">Author</a>
 		</p>
-		<p><a href="/privacy">Privacy</a></p>
 	</footer>
 </div>
 

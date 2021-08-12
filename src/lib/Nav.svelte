@@ -56,7 +56,7 @@
         <div class='collapse navbar-collapse' class:show={isActive} id='navbarSupportedContent'>
             <ul class='navbar-nav me-auto'>
                 <li class='nav-item a-link'>
-                    <a href="/support" class="nav-link">Support</a>
+                    &nbsp;
                 </li>
             </ul>
             <ul class="navbar-nav me-auto">
