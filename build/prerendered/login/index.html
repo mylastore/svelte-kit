@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Login Form</title><meta name="robots" content="noindex, nofollow" data-svelte="svelte-xu3re">
+
+		
+
+		<link rel="modulepreload" href="/./_app/start-2c3ff9d9.js">
+		<link rel="modulepreload" href="/./_app/chunks/vendor-23c8162e.js">
+		<link rel="modulepreload" href="/./_app/chunks/preload-helper-08cc8e69.js">
+		<link rel="modulepreload" href="/./_app/chunks/singletons-12a22614.js">
+		<link rel="modulepreload" href="/./_app/pages/__layout.svelte-6e007ce8.js">
+		<link rel="modulepreload" href="/./_app/chunks/stores-36a9b970.js">
+		<link rel="modulepreload" href="/./_app/chunks/Noti-91c2ae11.js">
+		<link rel="modulepreload" href="/./_app/chunks/variables-e34b2610.js">
+		<link rel="modulepreload" href="/./_app/pages/login.svelte-a7200e9e.js">
+		<link rel="modulepreload" href="/./_app/chunks/validation-d3c71874.js">
+		<link rel="stylesheet" href="/./_app/assets/start-a8cd1609.css">
+		<link rel="stylesheet" href="/./_app/assets/pages/__layout.svelte-1e58b5ab.css">
+		<link rel="stylesheet" href="/./_app/assets/Noti-daa08d5c.css">
+		<link rel="stylesheet" href="/./_app/assets/pages/login.svelte-8438df88.css">
+		<link rel="stylesheet" href="/./_app/assets/validation-37230205.css">
+
+		<script type="module">
+			import { start } from "/./_app/start-2c3ff9d9.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":"/."},
+				session: {authenticated:false,token:void 0,user:null},
+				host: location.host,
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/./_app/pages/__layout.svelte-6e007ce8.js"),
+						import("/./_app/pages/login.svelte-a7200e9e.js")
+					],
+					page: {
+						host: location.host, // TODO this is redundant
+						path: "/login",
+						query: new URLSearchParams(""),
+						params: {}
+					}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="site"><nav class="navbar navbar-expand-lg navbar-light bg-light"><div class="container"><a class="navbar-brand a-link" href="/">SVELTE KIT</a>
+        <button class="navbar-toggler third-button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon undefined svelte-1dt9k7q"><span class="svelte-1dt9k7q"></span><span class="svelte-1dt9k7q"></span><span class="svelte-1dt9k7q"></span></div></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav me-auto"><li class="nav-item a-link"> 
+                </li></ul>
+            <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link active git a-link" aria-current="page" target="_blank" href="https://github.com/mylastore/svelte-kit.git"><svg fill="none" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5229 6.47715 22 12 22C17.5229 22 22 17.5229 22 12C22 6.47715 17.5229 2 12 2ZM0 12C0 5.3726 5.3726 0 12 0C18.6274 0 24 5.3726 24 12C24 18.6274 18.6274 24 12 24C5.3726 24 0 18.6274 0 12Z" fill="#999999"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M9.59162 22.7357C9.49492 22.6109 9.49492 21.4986 9.59162 19.399C8.55572 19.4347 7.90122 19.3628 7.62812 19.1833C7.21852 18.9139 6.80842 18.0833 6.44457 17.4979C6.08072 16.9125 5.27312 16.8199 4.94702 16.6891C4.62091 16.5582 4.53905 16.0247 5.84562 16.4282C7.15222 16.8316 7.21592 17.9303 7.62812 18.1872C8.04032 18.4441 9.02572 18.3317 9.47242 18.1259C9.91907 17.9201 9.88622 17.1538 9.96587 16.8503C10.0666 16.5669 9.71162 16.5041 9.70382 16.5018C9.26777 16.5018 6.97697 16.0036 6.34772 13.7852C5.71852 11.5669 6.52907 10.117 6.96147 9.49369C7.24972 9.07814 7.22422 8.19254 6.88497 6.83679C8.11677 6.67939 9.06732 7.06709 9.73672 7.99999C9.73737 8.00534 10.6143 7.47854 12.0001 7.47854C13.386 7.47854 13.8777 7.90764 14.2571 7.99999C14.6365 8.09234 14.94 6.36699 17.2834 6.83679C16.7942 7.79839 16.3844 8.99999 16.6972 9.49369C17.0099 9.98739 18.2372 11.5573 17.4833 13.7852C16.9807 15.2706 15.9927 16.1761 14.5192 16.5018C14.3502 16.5557 14.2658 16.6427 14.2658 16.7627C14.2658 16.9427 14.4942 16.9624 14.8233 17.8058C15.0426 18.368 15.0585 19.9739 14.8708 22.6234C14.3953 22.7445 14.0254 22.8257 13.7611 22.8673C13.2924 22.9409 12.7835 22.9822 12.2834 22.9982C11.7834 23.0141 11.6098 23.0123 10.9185 22.948C10.4577 22.9051 10.0154 22.8343 9.59162 22.7357Z" fill="#999999"></path></svg></a></li></ul>
+            <ul class="navbar-nav"><li class="nav-item"><a class="nav-link a-link active" href="/login">Sing In</a></li>
+                    <li class="nav-item"><a class="a-link btn btn-outline-secondary" role="button" href="/register">Sing Up</a></li>
+                </ul></div></div>
+</nav>
+	
+	<div class="site-content">
+
+
+
+<main><div class="container"><div class="d-flex justify-content-center mt-5"><div class="card login svelte-16lbl9s"><div class="card-body"><h4><strong>Sing In</strong></h4>
+          <p>We are glad you are here.</p>
+          <div><div class="mb-3"><label class="form-label" for="email">Email</label>
+	
+	<input class="form-control is-large  svelte-1yagpkh" type="text" id="email" value="">
+
+	
+</div>
+            <div class="mb-3"><label class="form-label" for="password">Password</label>
+	
+	<input class="form-control is-large  svelte-1yagpkh" type="password" id="password" value="">
+<div class="form-text">Password minimum length 8, must have one capital letter, 1 number, and one unique character.</div>
+	
+</div></div>
+          <div><a href="/forgot" class="text-black-50">Forgot Password?</a>
+            <br>
+            <br></div>
+          <div class="d-grid gap-2"><button aria-disabled="true" class="btn btn-primary btn-lg svelte-16lbl9s disabled" disabled>Sing In
+            </button></div></div>
+        <div class="card-footer text-center bg-white"><a href="register" class="text-black-50">Don&#39;t have an account? </a></div></div></div>
+
+    <div class="d-flex justify-content-center"><div class="card mt-5 login svelte-16lbl9s"><div class="card-header bg-light"><span>Test users</span></div>
+        <div class="card-body text-primary"><p>Admin: me@me.com Password#1</p>
+          <p>User: me2@me.com Password#1</p></div></div></div></div>
+</main></div>
+	<footer class="text-center svelte-1pgz32s"><p><a href="/"><strong>© 2021 SVELTE KIT. All rights reserved</strong></a><br>
+	The source code is open source -  <a href="https://mylastore.com">Author</a></p></footer>
+</div>
+
+
+
+	
+</div>
+	</body>
+</html>

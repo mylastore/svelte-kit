@@ -7,5 +7,3 @@ node_modules
 /.idea/
 .svelte-kit
 package-lock.json
-production.env
-build

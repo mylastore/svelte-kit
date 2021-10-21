@@ -113,7 +113,7 @@
               >
                 Sing Up
               </button>
-              <small>By signing up you accept our <a href="/privacy">Privacy Policy.</a></small>
+              <small>By signing up you accept our Privacy Policy.</small>
             </div>
           </form>
         </div>
