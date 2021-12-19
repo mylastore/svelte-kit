@@ -35,7 +35,7 @@
       email = ''
       password = ''
       name = ''
-      return notifications.success(res.message)
+      return notifications.push(res.message, 'success')
     } catch (err) {
       return notifications.push(err.message)
     }

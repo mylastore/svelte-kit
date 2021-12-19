@@ -31,7 +31,7 @@ export default {
 			crawl: true,
 			enabled: true,
 			onError: 'fail',
-			pages: ['*']
+			entries: ['*']
 		},
 		router: true,
 		ssr: true,
