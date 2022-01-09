@@ -23,6 +23,7 @@
 	import LoadingSpinner from '$lib/LoadingSpinner.svelte'
 	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'
+	import {browser} from '$app/env'
 	import {notifications} from '$lib/Noti.svelte'
 
 	export let token
@@ -55,9 +56,9 @@
 		}
 	}
 
-	if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-		unsubscribe = page.subscribe(async ({ path }) => {
-			urlPage = path.split('/').pop()
+	if (browser) {
+		unsubscribe = page.subscribe(async ({ url }) => {
+			urlPage = url.pathname.split('/').pop()
 			currentPage = parseInt(urlPage)
 			await getAllUsers(urlPage)
 		})

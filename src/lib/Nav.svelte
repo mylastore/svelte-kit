@@ -69,16 +69,16 @@
             <ul class='navbar-nav'>
                 {#if !user}
                     <li class='nav-item'>
-                        <a class='nav-link a-link' class:active={$page.path === '/login'} href='/login'>Sing In</a>
+                        <a class='nav-link a-link' class:active={$page.url.pathname === '/login'} href='/login'>Sing In</a>
                     </li>
                     <li class='nav-item'>
-                        <a class='a-link btn btn-outline-secondary' role="button" class:active={$page.path === '/register'} href='/register'>Sing Up</a>
+                        <a class='a-link btn btn-outline-secondary' role="button" class:active={$page.url.pathname === '/register'} href='/register'>Sing Up</a>
                     </li>
                 {/if}
                 {#if user}
                     <li class='nav-item dropdown'>
                         <a
-                                class:active={$page.path === `user/profile/${user.username}`}
+                                class:active={$page.url.pathname === `user/profile/${user.username}`}
                                 class='nav-link dropdown-toggle'
                                 href='#'
                                 id='navbarDropdown'
@@ -92,13 +92,13 @@
                             <li>
                                 <a
                                         class='dropdown-item a-link'
-                                        class:active={$page.path === `user/profile/${user.username}`}
+                                        class:active={$page.url.pathname === `user/profile/${user.username}`}
                                         href='/user/profile/{user.username}'>Profile</a
                                 >
                             </li>
                             {#if user.role === 'admin'}
                                 <li>
-                                    <a class='dropdown-item a-link' class:active={$page.path === '/admin'} href='/admin'
+                                    <a class='dropdown-item a-link' class:active={$page.url.pathname === '/admin'} href='/admin'
                                     >Admin</a
                                     >
                                 </li>
