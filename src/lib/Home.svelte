@@ -15,7 +15,7 @@
   <div class='row blogs'>
     <div class='col-md'>
       <div class='card mb-3'>
-        <img src='img/1.webp' class='card-img-top' alt='...'>
+        <img src='img/1.webp' width="550" height="368" class='card-img-top img-fluid' alt='mountains'>
         <div class='card-body'>
           <h5 class='card-title'>Power by Svelte</h5>
           <p class='card-text'>SvelteKit is an application framework powered by Svelte — build bigger apps with a
@@ -26,7 +26,7 @@
     </div>
     <div class='col-md'>
       <div class='card mb-3'>
-        <img src='img/1.webp' class='card-img-top' alt='...'>
+        <img src='img/1.webp' width="550" height="368" class='card-img-top img-fluid' alt='mountains'>
         <div class='card-body'>
           <h5 class='card-title'>Sveltekit</h5>
           <p class='card-text'>A framework for building web applications, with a simple development experience and
@@ -37,7 +37,7 @@
     </div>
     <div class='col-md'>
       <div class='card mb-3'>
-        <img src='img/1.webp' class='card-img-top' alt='...'>
+        <img src='img/1.webp' width="550" height="368" class='card-img-top img-fluid' alt='mountains'>
         <div class='card-body'>
           <h5 class='card-title'>Build fast</h5>
           <p class='card-text'>Hit the ground running with advanced routing, server-side rendering, code-splitting,
