@@ -8,8 +8,10 @@
   import '../../src/app.css'
   import {variables} from '$lib/utils/variables'
   import Github from '$lib/images/Gighub.svelte'
-  let user = $session.user
+  import DarkModeToggle from '$lib/themes/DarkModeToggle.svelte'
+  import { theme } from '$lib/themes/themeStore.js'
 
+  let user = $session.user
   let isActive = false
 
   function toggleNav () {
@@ -36,7 +38,7 @@
   }
 </script>
 
-<nav class='navbar navbar-expand-lg navbar-light bg-light'>
+<nav class="navbar navbar-expand-lg navbar-light {$theme === 'dark' ? 'navbar-dark bg-dark' : 'navbar-light bg-light' }" >
     <div class='container'>
         <a class='navbar-brand a-link' href='/'>
             {variables.appName}
@@ -67,6 +69,7 @@
                 </li>
             </ul>
             <ul class='navbar-nav'>
+                <DarkModeToggle />
                 {#if !user}
                     <li class='nav-item'>
                         <a class='nav-link a-link' class:active={$page.url.pathname === '/login'} href='/login'>Sing In</a>
@@ -88,7 +91,7 @@
                         >
                             {user.username}
                         </a>
-                        <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>
+                        <ul class="dropdown-menu dropdown-menu-end {$theme === 'dark' ? 'dropdown-menu-dark' : '' }" aria-labelledby='navbarDropdown'>
                             <li>
                                 <a
                                         class='dropdown-item a-link'

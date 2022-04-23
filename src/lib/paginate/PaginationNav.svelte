@@ -3,6 +3,7 @@
 	import { createEventDispatcher } from 'svelte'
 	import { PREVIOUS_PAGE, NEXT_PAGE, ELLIPSIS } from './symbolTypes'
 	import {ChevronLeftIcon, ChevronRightIcon} from 'svelte-feather-icons'
+	import {theme} from "$lib/themes/themeStore.js"
 
 	const dispatch = createEventDispatcher()
 
@@ -31,7 +32,7 @@
 	}
 </script>
 
-<nav aria-label="pagination">
+<nav aria-label="pagination" class="navbar {$theme === 'dark' ? 'navbar-dark bg-dark' : ''}">
 	<ul class="pagination">
 		{#each options as option}
 			{#if option.type === 'symbol' && option.symbol === PREVIOUS_PAGE}
@@ -110,7 +111,7 @@
 	}
 
 	.pagination {
-		padding: 40px 0;
+		padding: 40px 10px;
 		width: 100%;
 	}
 </style>

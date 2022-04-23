@@ -1,6 +1,6 @@
 <script context="module">
   export async function load ({ session }) {
-    if (session.authenticated) {
+    if (session.user) {
       return {
         status: 302,
         redirect: '/'
@@ -29,7 +29,7 @@
   async function submitForm () {
     try {
       const res = await api('POST', 'user/account-activation', { name, email, password })
-      if (res && res.status >= 400) {
+      if (res.status >= 400) {
         throw new Error(res.message)
       }
       email = ''

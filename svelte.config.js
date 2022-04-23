@@ -7,10 +7,10 @@ export default {
 
 	// an array of file extensions that should be treated as Svelte components
 	extensions: ['.svelte'],
-
+	// options passed to svelte.preprocess (https://svelte.dev/docs#svelte_preprocess)
+	preprocess: null,
 	kit: {
 		adapter: node(),
-		target: '#svelte',
 		amp: false,
 		appDir: '_app',
 		files: {
@@ -22,7 +22,10 @@ export default {
 			template: 'src/app.html'
 		},
 		floc: false,
-		hydrate: true,
+		browser: {
+			router: true,
+			hydrate: true
+		},
 		paths: {
 			assets: '',
 			base: ''
@@ -33,12 +36,7 @@ export default {
 			onError: 'fail',
 			entries: ['*']
 		},
-		router: true,
-		ssr: true,
 		trailingSlash: 'never',
 		vite: () => ({})
-	},
-
-	// options passed to svelte.preprocess (https://svelte.dev/docs#svelte_preprocess)
-	preprocess: null
+	}
 }

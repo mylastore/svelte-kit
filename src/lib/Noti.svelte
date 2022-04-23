@@ -46,7 +46,7 @@
     border-top-left-radius: .25rem;
     display: block;
     position: fixed;
-    top: 0;
+    top: 45px;
     right: 0;
     padding: 1rem;
     z-index: 10;

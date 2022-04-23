@@ -1,4 +1,4 @@
-body{
+body {
   overflow: scroll;
 }
 
@@ -43,4 +43,42 @@ body{
 .alert-success {
   color: white;
   border-color: var(--bs-success)
+}
+
+@media all {
+  body.dark {
+    background: #2B2A32;
+    color: white;
+  }
+
+  body.dark .card {
+    background: #42414C;
+    border-color: #4d4d4d;
+  }
+
+  body.dark .card-body {
+    color: white;
+  }
+
+  body.dark .bg-white,
+  body.dark .bg-light {
+    background: #212020 !important;
+  }
+
+  body.dark .card-footer a,
+  body.dark .text-black-50 {
+    color: gray !important;
+  }
+
+  body.dark .page-link {
+    background: #42414c;
+    border-color: #42414c;
+  }
+
+  body.dark .disabled > .page-link {
+    background: #565656;
+    border-color: #565656;
+    color: #444;
+  }
+
 }

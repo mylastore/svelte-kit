@@ -1,8 +1,11 @@
 <script>
-  import Logo from "$lib/images/Logo.svelte";
+  import Logo from "$lib/images/Logo.svelte"
+  import {theme} from '$lib/themes/themeStore.js'
+
 </script>
 
-<div class='hero-bg'>
+
+<div class="{$theme === 'dark' ? 'hero-bg-dark' : 'hero-bg' }">
   <div class="container">
     <div class="center">
       <Logo/>
@@ -49,10 +52,12 @@
   </div>
 </div>
 
+
 <style>
-  .center{
+  .center {
     padding: 50px 0
   }
+
   .tagline {
     margin-top: 5px;
   }
@@ -60,6 +65,13 @@
   .hero-bg {
     background: #d3d6d9;
     background: radial-gradient(34.14% 72.25% at 47.58% 31.75%, rgba(232, 244, 255, .52) 0, rgba(255, 255, 255, 0) 100%), linear-gradient(92.4deg, #d1d4d7 14.67%, rgba(238, 247, 255, .48) 54.37%, rgba(206, 216, 224, .62) 92.49%), linear-gradient(0deg, #dbe7ef, #dbe7ef);
+    position: relative;
+    height: 200px;
+  }
+
+  .hero-bg-dark {
+    background-color: #2B2A31;
+    background-image: linear-gradient(315deg, #3c3b46 0%, #1e1e25 74%);
     position: relative;
     height: 200px;
   }
