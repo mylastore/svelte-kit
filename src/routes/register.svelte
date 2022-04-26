@@ -15,6 +15,7 @@
   import { api } from '$lib/utils/api'
   import { isEmail, isPassword } from '$lib/utils/validation'
   import { notifications } from '$lib/Noti.svelte'
+  import {goto} from "$app/navigation";
 
   let name = ''
   let email = ''
@@ -35,7 +36,8 @@
       email = ''
       password = ''
       name = ''
-      return notifications.push(res.message, 'success')
+      notifications.push(res.message, 'success')
+      return goto('login')
     } catch (err) {
       return notifications.push(err.message)
     }

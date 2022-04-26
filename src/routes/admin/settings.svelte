@@ -21,25 +21,30 @@
   import {notifications} from '$lib/Noti.svelte'
   import Loader from "$lib/loader/Loader.svelte"
   import {theme} from "$lib/themes/themeStore.js"
+  import {onMount} from "svelte"
 
   export let token
   export let user
 
   let loaderStatus
-  let newUser
-  let userId
+  let newUser = false
+  let settingsId
 
-  (async () => {
-    const res = await api('POST', `user/settings/${user.username}`, {}, token)
-    loaderStatus = res.status ? res.status : 200
-    if (res.status >= 400) {
-      throw new Error(res.message)
+  async function getSettings(){
+    try{
+      const res = await api('GET', `admin/get-settings`, {}, token)
+      loaderStatus = res.status ? res.status : 200
+      if (res.status >= 400) {
+        throw new Error(res.message)
+      }
+      for(let element of res){
+        newUser = element.newUser
+        settingsId = element._id
+      }
+    }catch (err){
+      notifications.push(err.message)
     }
-    userId = res._id
-    return (newUser = res.settings.newUser)
-  })().catch(err => {
-    notifications.push(err.message)
-  })
+  }
 
   async function updateSettings(e) {
     if (e.target.value === 'user') {
@@ -47,18 +52,23 @@
     }
     const userObject = {
       newUser: newUser,
-      userId: userId
+      id: settingsId
     }
 
     try {
-      const res = await api('PATCH', 'admin/update-settings', userObject, token)
+      const res = await api('POST', 'admin/update-settings', userObject, token)
       if (res.status >= 400) {
         throw new Error(res.message)
       }
+      return console.log('Success')
     } catch (err) {
       notifications.push(err.message)
     }
   }
+
+  onMount(async ()=>{
+    await getSettings()
+  })
 
 </script>
 
@@ -89,7 +99,7 @@
                     on:change={updateSettings}
                     checked={newUser}
                 />
-                <label for="option1">New User</label>
+                <label for="option1">New User {newUser}</label>
               </div>
             </form>
           </div>
