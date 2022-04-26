@@ -99,7 +99,7 @@
                     on:change={updateSettings}
                     checked={newUser}
                 />
-                <label for="option1">New User {newUser}</label>
+                <label for="option1">New User</label>
               </div>
             </form>
           </div>
