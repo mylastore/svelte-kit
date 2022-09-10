@@ -6,11 +6,3 @@ export async function handle({ event, resolve }) {
   event.locals.token = cookies.token
   return await resolve(event)
 }
-
-/** @type {import('@sveltejs/kit').GetSession} */
-export function getSession(request) {
-  return {
-    token: request.locals.token,
-    user: request.locals.user ? JSON.parse(request.locals.user) : null
-  }
-}

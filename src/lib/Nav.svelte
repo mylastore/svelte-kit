@@ -3,15 +3,16 @@
   import { page } from '$app/stores'
   import { api } from '$lib/utils/api'
   import { logout } from '$lib/utils/auth'
-  import { session } from '$app/stores'
   import 'bootstrap/dist/css/bootstrap.css'
   import '../../src/app.css'
   import {variables} from '$lib/utils/variables'
   import Github from '$lib/images/Gighub.svelte'
   import DarkModeToggle from '$lib/themes/DarkModeToggle.svelte'
   import { theme } from '$lib/themes/themeStore.js'
+  import {userName} from "$lib/utils/username"
 
-  let user = $session.user
+  let user = $page.data.user
+
   let isActive = false
 
   function toggleNav () {
@@ -89,7 +90,7 @@
                                 data-bs-toggle='dropdown'
                                 aria-expanded='false'
                         >
-                            {user.username}
+                            {$userName ? $userName : user.username}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end {$theme === 'dark' ? 'dropdown-menu-dark' : '' }" aria-labelledby='navbarDropdown'>
                             <li>

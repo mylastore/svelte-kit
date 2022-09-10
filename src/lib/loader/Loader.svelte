@@ -1,23 +1,17 @@
 <script>
-	import Message from '$lib/Message.svelte'
 	import Loading from '$lib/loader/LoadingPulse.svelte'
-
-	export let loaderStatus
-
-	let networkError = false
-	if (loaderStatus >= 500) {
-		networkError = true
-	}
+	import NetworkError from "$lib/NetworkError.svelte"
+	import {loaderStatus} from "$lib/loader/loaderStatus"
 
 </script>
 
 <div class='top'>
-	{#if !loaderStatus}
+	{#if !$loaderStatus}
 		<Loading />
 	{:else }
-		{#if networkError}
+		{#if $loaderStatus >= 500}
 			<div class='center'>
-				<Message />
+				<NetworkError />
 			</div>
 		{:else}
 			<slot />
@@ -30,5 +24,4 @@
     max-width: 500px;
     margin: 0 auto;
   }
-
 </style>

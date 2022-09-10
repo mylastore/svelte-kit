@@ -31,7 +31,7 @@
       <div class='card mb-3'>
         <img src='img/1.webp' width="550" height="368" class='card-img-top img-fluid' alt='mountains'>
         <div class='card-body'>
-          <h5 class='card-title'>Sveltekit</h5>
+          <h5 class='card-title'>SvelteKit</h5>
           <p class='card-text'>A framework for building web applications, with a simple development experience and
             flexible filesystem-based routing</p>
           <a href='https://kit.svelte.dev' class='btn btn-primary'>Go somewhere</a>

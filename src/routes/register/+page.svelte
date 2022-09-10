@@ -1,15 +1,3 @@
-<script context="module">
-  export async function load ({ session }) {
-    if (session.user) {
-      return {
-        status: 302,
-        redirect: '/'
-      }
-    }
-    return {}
-  }
-</script>
-
 <script>
   import Input from '$lib/Input.svelte'
   import { api } from '$lib/utils/api'
@@ -30,14 +18,13 @@
   async function submitForm () {
     try {
       const res = await api('POST', 'user/account-activation', { name, email, password })
-      if (res.status >= 400) {
-        throw new Error(res.message)
+      if(res){
+        email = ''
+        password = ''
+        name = ''
+        notifications.push(res.message, 'success')
+        return goto('login')
       }
-      email = ''
-      password = ''
-      name = ''
-      notifications.push(res.message, 'success')
-      return goto('login')
     } catch (err) {
       return notifications.push(err.message)
     }

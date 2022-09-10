@@ -1,21 +1,10 @@
-<script context='module'>
-  export async function load({session}) {
-    if (session.user) {
-      return {
-        status: 302,
-        redirect: '/'
-      }
-    }
-    return {}
-  }
-</script>
-
 <script>
   import Input from '$lib/Input.svelte'
   import {isEmail, isPassword} from '$lib/utils/validation'
   import {api} from '$lib/utils/api'
   import {authenticate} from '$lib/utils/auth'
   import {notifications} from '$lib/Noti.svelte'
+  import {userName} from "$lib/utils/username"
 
   let email = ''
   let password = ''
@@ -32,12 +21,11 @@
     }
     try {
       const res = await api('POST', 'user/login', data)
-      if (res.status >= 400) {
-        throw new Error(res.message)
+      if(res){
+        await authenticate(res)
+        $userName = res.user.username
+        return location.href = `/user/profile/${res.user.username}`
       }
-      // set token and user on httpOnly cookies
-      await authenticate(res)
-      location.href = `/user/profile/${res.user.username}`
     } catch (err) {
       return notifications.push(err.message)
     }

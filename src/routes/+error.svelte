@@ -1,42 +1,23 @@
-<script context="module">
-  export function load ({ error, status }) {
-    return {
-      props: {
-        status: status,
-        error: error
-      }
-    }
-  }
-</script>
+<svelte:head>
+  <title>Not Found!</title>
+  <meta name="robots" content="noindex, nofollow" />
+</svelte:head>
 
-<script>
-  import { AlertTriangleIcon } from 'svelte-feather-icons'
-
-  export let status
-  export let error
-</script>
-
-{#if error}
-  <div class="container">
-    <div class="alert-container">
-      <div class="alert-icon">
-        <AlertTriangleIcon size="5x"/>
-      </div>
-      <h1>{status}</h1>
-      <h4>{error.message}</h4>
+<div class="container mt-4">
+  <div class="text-center">
+    <img class="img-fluid" src="/img/404.gif" width="480" height="480" alt="404 Not Found"/>
+    <div class="alert alert-danger fl" role="alert">
+      <b>Not Found!</b>
     </div>
   </div>
-{/if}
+</div>
 
 <style>
-  .alert-icon {
-    margin-bottom: 1rem;
-    color: var(--bs-danger);
+  img{
+    margin: 20px;
   }
-
-  .alert-container {
-    display: block;
-    text-align: center;
-    margin: 5rem auto;
+  .alert{
+    max-width: 480px;
+    margin: auto;
   }
 </style>

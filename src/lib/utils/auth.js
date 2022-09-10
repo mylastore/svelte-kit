@@ -1,5 +1,4 @@
 import Cookies from 'js-cookie'
-import {browser} from '$app/env'
 
 export const handleSession = async (res) => {
   if (res.status === 440) {
@@ -10,7 +9,7 @@ export const handleSession = async (res) => {
 export const logout = async () => {
   await removeCookie('token')
   await removeCookie('user')
-  if (browser) {
+  if (typeof window != 'undefined') {
     window.location.replace('/')
   }
 }
@@ -20,14 +19,16 @@ export const setCookie = async (key, value) => {
 }
 
 export const removeCookie = async (key) => {
-  if (browser) {
+  if (typeof window != 'undefined') {
     await Cookies.remove(key)
   }
 }
 
 export const authenticate = async (data) => {
-  if (browser) {
+  if (typeof window !== 'undefined') {
     await setCookie('token', data.token, {expires: 7, httpOnly: true, sameSite: 'lax'})
     await setCookie('user', data.user, {expires: 7, httpOnly: true, sameSite: 'lax'})
+    return true
   }
+
 }

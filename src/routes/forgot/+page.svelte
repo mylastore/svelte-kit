@@ -13,16 +13,14 @@
     const forgotForm = document.getElementById('forgot-form')
     try {
       const res = await api('POST', 'user/forgot', {email})
-      if (res && res.status >= 400) {
-        throw new Error(res.message)
+      if(res){
+        notifications.push(res.message, 'success')
+        return forgotForm.reset()
       }
-      notifications.push(res.message, 'success')
-      return forgotForm.reset()
     } catch (err) {
       notifications.push(err.message)
     }
   }
-
 </script>
 
 <svelte:head>

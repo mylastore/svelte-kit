@@ -3,13 +3,12 @@
   import {variables} from '$lib/utils/variables'
   import Notification from '$lib/Noti.svelte'
   import {theme} from "$lib/themes/themeStore.js"
-  import {browser} from "$app/env"
 
   const year = new Date().getFullYear()
 
 </script>
 
-{#if $theme && browser}
+{#if $theme && (typeof window != 'undefined')}
   <div class="site">
     <Nav/>
     <Notification duration='7000'/>

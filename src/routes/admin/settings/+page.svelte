@@ -1,20 +1,3 @@
-<script context="module">
-  export async function load({session}) {
-    if (!session.user || session.user.role !== 'admin') {
-      return {
-        status: 302,
-        redirect: '/'
-      }
-    }
-    return {
-      props: {
-        token: session.token,
-        user: session.user
-      }
-    }
-  }
-</script>
-
 <script>
   import {api} from '$lib/utils/api'
   import Tabs from '$lib/Tabs.svelte'
@@ -23,50 +6,44 @@
   import {theme} from "$lib/themes/themeStore.js"
   import {onMount} from "svelte"
 
-  export let token
-  export let user
+  export let data
 
-  let loaderStatus
+  let {token, user} = data
   let newUser = false
   let settingsId
 
-  async function getSettings(){
-    try{
-      const res = await api('GET', `admin/get-settings`, {}, token)
-      loaderStatus = res.status ? res.status : 200
-      if (res.status >= 400) {
-        throw new Error(res.message)
-      }
-      for(let element of res){
-        newUser = element.newUser
-        settingsId = element._id
-      }
-    }catch (err){
-      notifications.push(err.message)
-    }
-  }
-
-  async function updateSettings(e) {
-    if (e.target.value === 'user') {
-      newUser = !newUser
-    }
-    const userObject = {
-      newUser: newUser,
-      id: settingsId
-    }
-
+  async function getSettings() {
     try {
-      const res = await api('POST', 'admin/update-settings', userObject, token)
-      if (res.status >= 400) {
-        throw new Error(res.message)
+      const res = await api('GET', `admin/get-settings`, {}, token)
+      if (res) {
+        for (let element of res) {
+          newUser = element.newUser
+          settingsId = element._id
+        }
       }
-      return console.log('Success')
     } catch (err) {
       notifications.push(err.message)
     }
   }
 
-  onMount(async ()=>{
+  async function updateSettings() {
+    const userObject = {
+      newUser: !newUser,
+      id: settingsId
+    }
+
+    try {
+      const res = await api('POST', 'admin/update-settings', userObject, token)
+      if (res) {
+        return console.log('Success')
+      }
+
+    } catch (err) {
+      notifications.push(err.message)
+    }
+  }
+
+  onMount(async () => {
     await getSettings()
   })
 
@@ -77,39 +54,39 @@
   <meta name="robots" content="noindex, nofollow"/>
 </svelte:head>
 
-{#if !loaderStatus}
-  <Loader/>
-{:else }
-  <Loader {loaderStatus}>
-    <Tabs/>
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="card is-6">
-          <header class="card-header">
-            <h3>Email Notifications</h3>
-            <small>Select notification settings below, all optional</small>
-          </header>
-          <div class="card-body">
-            <form class="form">
-              <div class="input-group {$theme === 'dark' ? 'input-group-dark' : ''}">
-                <input
-                    id="option1"
-                    type="checkbox"
-                    value={'user'}
-                    on:change={updateSettings}
-                    checked={newUser}
-                />
-                <label for="option1">New User</label>
-              </div>
-            </form>
-          </div>
+<Loader>
+  <Tabs/>
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="card is-6">
+        <header class="card-header">
+          <h3>Email Notifications</h3>
+          <small>Select notification settings below, all optional</small>
+        </header>
+        <div class="card-body">
+          <form class="form">
+            <div class="input-group {$theme === 'dark' ? 'input-group-dark' : ''}">
+              <input
+                  id="option1"
+                  type="checkbox"
+                  value={'user'}
+                  on:change={updateSettings}
+                  checked={newUser}
+              />
+              <label for="option1">Send an email when a new user is created.</label>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </Loader>
-{/if}
+  </div>
+</Loader>
 
 <style>
+  label {
+    padding-right: 60px;
+  }
+
   .input-group-dark {
     background-color: #2c2c2c !important;
     color: white !important;
@@ -123,12 +100,14 @@
     margin-bottom: 0;
     line-height: 1;
   }
+
   .input-group {
     background-color: #fff;
     display: block;
     margin: 10px 0;
     position: relative;
   }
+
   .input-group label {
     padding: 12px 30px;
     width: 100%;
