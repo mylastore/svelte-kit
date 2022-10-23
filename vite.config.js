@@ -4,7 +4,7 @@ import {variables} from "$lib/utils/variables"
 
 const isDev = variables.env === 'development'
 let options = {}
-let config
+let config = {}
 
 if(isDev){
 	options = {
