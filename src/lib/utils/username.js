@@ -1,5 +1,7 @@
 import {writable} from "svelte/store"
 import {browser} from "$app/environment"
 
-export const userName = writable((browser && localStorage.getItem('userName') || ''))
-userName.subscribe((v)=> browser && (localStorage.userName = v))
+const userName = browser && localStorage.getItem('username')
+
+export const username = writable( (browser && userName && (JSON.parse(userName)) || '') )
+username.subscribe((v)=> browser && ( localStorage.username = JSON.stringify(v)) )

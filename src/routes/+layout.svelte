@@ -3,6 +3,8 @@
   import {variables} from '$lib/utils/variables'
   import Notification from '$lib/Noti.svelte'
   import {theme} from "$lib/themes/themeStore.js"
+  import 'bootstrap/dist/css/bootstrap.css'
+  import '../../src/app.css'
 
   const year = new Date().getFullYear()
 

@@ -8,15 +8,15 @@ import {loaderStatus} from "$lib/loader/loaderStatus"
 const {fetch} = fetchPonyfill()
 const apiPath = variables.env === 'development' ? variables.apiDevPath : variables.apiLivePath
 
-export const api = (method, path, data, token) => {
+export const api = (method, path, data) => {
   const noData = method === 'GET' || method === 'DELETE'
 
   return fetch(`${apiPath}/${path}`, {
     method: method,
+    'credentials': 'include',
     headers: {
       Accept: 'application/json',
-      'Content-Type': 'application/json',
-      ...(token ? {Authorization: `Bearer ${token}`} : {})
+      'Content-Type': 'application/json'
     },
     ...(!noData ? {body: JSON.stringify(data)} : null)
   })
@@ -26,9 +26,9 @@ export const api = (method, path, data, token) => {
         browser && loaderStatus.update(()=> 200)
         if (response.status >= 400) {
           browser && notifications.push(response.message)
-          return null
+          await handleSession(response)
+          return true
         }
-        await handleSession(response)
         return await response
       }
     })

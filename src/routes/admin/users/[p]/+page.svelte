@@ -76,9 +76,6 @@
                 <abbr title="User profile image">Image</abbr>
               </th>
               <th scope="col">
-                <abbr title="Email">Email</abbr>
-              </th>
-              <th scope="col">
                 <abbr title="User Name">Name</abbr>
               </th>
               <th scope="col">
@@ -108,9 +105,6 @@
                   {:else}
                     <img class="default-img" src="img/default-image.jpg" alt="User Image"/>
                   {/if}
-                </td>
-                <td>
-                  <span data-id={user._id}>{user.email}</span>
                 </td>
                 <td>{user.name}</td>
                 <td>{user.gender}</td>

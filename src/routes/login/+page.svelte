@@ -1,10 +1,10 @@
 <script>
   import Input from '$lib/Input.svelte'
   import {isEmail, isPassword} from '$lib/utils/validation'
-  import {api} from '$lib/utils/api'
-  import {authenticate} from '$lib/utils/auth'
+  import {api} from '$lib/utils/api.js'
   import {notifications} from '$lib/Noti.svelte'
-  import {userName} from "$lib/utils/username"
+  import {setUser} from '$lib/utils/auth'
+  import {username} from '$lib/utils/username.js'
 
   let email = ''
   let password = ''
@@ -21,10 +21,10 @@
     }
     try {
       const res = await api('POST', 'user/login', data)
-      if(res){
-        await authenticate(res)
-        $userName = res.user.username
-        return location.href = `/user/profile/${res.user.username}`
+      if (res) {
+        await setUser(res)
+        $username = res.user.name
+        return location.href = "/user/profile"
       }
     } catch (err) {
       return notifications.push(err.message)
@@ -56,24 +56,24 @@
         <p>We are glad you are here.</p>
         <div>
           <Input
-              id='email'
-              label='Email'
-              valid={emailValid}
-              validityMessage='Please enter a valid email.'
-              value={email}
-              className='is-large'
-              on:input={(event) => (email = event.target.value)}
+            id='email'
+            label='Email'
+            valid={emailValid}
+            validityMessage='Please enter a valid email.'
+            value={email}
+            className='is-large'
+            on:input={(event) => (email = event.target.value)}
           />
           <Input
-              id='password'
-              label='Password'
-              help="Password minimum length 8, must have one capital letter, 1 number, and one unique character."
-              type='password'
-              valid={passwordValid}
-              validityMessage='Please enter a valid password.'
-              value={password}
-              className='is-large'
-              on:input={(event) => (password = event.target.value)}
+            id='password'
+            label='Password'
+            help="Password minimum length 8, must have one capital letter, 1 number, and one unique character."
+            type='password'
+            valid={passwordValid}
+            validityMessage='Please enter a valid password.'
+            value={password}
+            className='is-large'
+            on:input={(event) => (password = event.target.value)}
           />
         </div>
         <div>
@@ -83,11 +83,11 @@
         </div>
         <div class="d-grid gap-2">
           <button
-              aria-disabled={!formIsValid ? 'true' : 'false'}
-              class='btn btn-primary btn-lg'
-              on:click={submitForm}
-              class:disabled={!formIsValid}
-              disabled={!formIsValid}>
+            aria-disabled={!formIsValid ? 'true' : 'false'}
+            class='btn btn-primary btn-lg'
+            on:click={submitForm}
+            class:disabled={!formIsValid}
+            disabled={!formIsValid}>
             Sing In
           </button>
         </div>
@@ -113,12 +113,12 @@
 
 
 <style>
-  .login {
-    width: 25rem;
-  }
+    .login {
+        width: 25rem;
+    }
 
-  .disabled {
-    pointer-events: none;
-  }
+    .disabled {
+        pointer-events: none;
+    }
 
 </style>

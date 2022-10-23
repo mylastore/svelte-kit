@@ -20,13 +20,11 @@
 
   async function getUser() {
     try {
-      const res = await api('GET', `admin/user/${$page.params.id}`, {}, $page.data.token)
+      const res = await api('GET', `admin/user/${$page.params.id}`, {})
       if (res) {
-        userEmail = res.email
         userAvatar = res.avatar
         userRole = res.role
         name = res.name
-        userName = res.username
         userWebsite = res.website
         userLocation = res.location
         userAbout = res.about
@@ -58,12 +56,10 @@
           <h1 class="card-header-title">User Profile</h1>
         </div>
         <div class="card-body">
-          <img class="center avatar" src={userAvatar} alt="user image"/>
+          <img class="center avatar" src={userAvatar} alt="username image"/>
           <br/>
           <div class="profile">
-            <p>@{userName}</p>
             {#if name}<p><b>Name: </b> <span>{name}</span></p>{/if}
-            <p><b>Email: </b> <span>{userEmail}</span></p>
             {#if userGender}<p><b>Gender: </b> <span>{userGender}</span></p>{/if}
             {#if userLocation}<p><b>Location: </b> <span>{userLocation}</span></p>{/if}
             {#if userWebsite}<p><b>Website: </b> <span>{userWebsite}</span></p>{/if}

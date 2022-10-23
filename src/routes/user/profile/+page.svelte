@@ -1,19 +1,17 @@
 <script>
-  import timeAgo from '$lib/utils/timeAgo'
-  import {isEmail, isPassword, isUrl, isRequire} from '$lib/utils/validation'
+  import timeAgo from '$lib/utils/timeAgo.js'
+  import {isEmail, isPassword, isUrl, isRequire} from '$lib/utils/validation.js'
   import Input from '$lib/Input.svelte'
-  import {authenticate, logout} from '$lib/utils/auth'
+  import {logout} from '$lib/utils/auth.js'
   import {onMount} from 'svelte'
-  import {invalidate} from '$app/navigation'
   import {notifications} from '$lib/Noti.svelte'
   import {AlertTriangleIcon} from 'svelte-feather-icons'
   import Loader from "$lib/loader/Loader.svelte"
   import {api} from "$lib/utils/api.js"
-  import {userName} from "$lib/utils/username"
+  import {page} from "$app/stores"
+  import {username} from "$lib/utils/username.js"
 
-  export let data
-
-  let {token, user} = data
+  let user = $page.data ? $page.data.user : null
   let password = ''
   let passwordConfirmation = ''
   let about
@@ -26,11 +24,10 @@
   let role
   let createdAt
   let avatar
-  let username
 
   async function getUser() {
     try {
-      const res = await api('GET', `user/profile/${user.username}`, {}, token)
+      const res = await api('GET', `user/profile/${user.userId}`)
       if (res) {
         about = res.about || ''
         location = res.location || ''
@@ -41,8 +38,7 @@
         name = res.name || ''
         role = res.role
         createdAt = timeAgo(res.createdAt)
-        avatar = res.avatar
-        return username = res.username
+        return avatar = res.avatar
       }
     } catch (err) {
       notifications.push(err.message)
@@ -54,13 +50,12 @@
   })
 
   $: emailValid = isEmail(email)
-  $: usernameRequired = isRequire(username)
   $: nameRequired = isRequire(name)
   $: passwordValid = isPassword(password)
   $: websiteValid = isUrl(website)
   $: passwordConfirmValid = password === passwordConfirmation
   $: passwordFormIsValid = passwordValid && passwordConfirmValid
-  $: formIsValid = emailValid && usernameRequired && nameRequired
+  $: formIsValid = emailValid && nameRequired
 
   async function updateUser() {
     let userObject = {}
@@ -70,14 +65,11 @@
         website,
         location,
         gender,
-        about,
-        ...(username !== $userName ? {username} : null)
+        about
       }
-      const res = await api('PATCH', `user/account/${$userName}`, userObject, token)
+      const res = await api('PATCH', `user/account/${user.userId}`, userObject)
       if (res) {
-        await authenticate(res)
-        $userName = res.user.username
-        await invalidate(`user/profile/${res.user.username}`)
+        $username = res.user.name
         return notifications.push('User profile was updated!', 'success')
       }
     } catch (err) {
@@ -89,7 +81,7 @@
     const result = confirm('Are you sure you want to delete your account?')
     if (result) {
       try {
-        const res = await api('POST', 'user/delete', {_id: _id}, token)
+        const res = await api('POST', 'user/delete', {_id: _id})
         if(res){
           await logout()
         }
@@ -106,7 +98,7 @@
         _id,
         password
       }
-      const res = await api('POST', 'user/update-password', userObject, token)
+      const res = await api('POST', 'user/update-password', userObject)
       if(res){
         passwordForm.reset()
         notifications.push('Password was updated!', 'success')
@@ -121,7 +113,6 @@
   <title>Profile Page</title>
   <meta name="robots" content="noindex, nofollow"/>
 </svelte:head>
-
 
 <Loader>
   <section class="mt-4">
@@ -140,7 +131,6 @@
                   src={avatar}
                   alt="User Image"
               />
-              <div class="text-center">@{username}</div>
               <div class="card-body">
                 {#if name}
                   <p>
@@ -193,14 +183,6 @@
             <div class="mx-auto d-block">
               <form class="card mb-4">
                 <div class="card-body">
-                  <Input
-                      id="username"
-                      label="Username*"
-                      valid={usernameRequired}
-                      validityMessage="Username is required"
-                      value={username}
-                      on:input={(e) => (username = e.target.value)}
-                  />
                   <Input
                       id="name"
                       label="Name*"

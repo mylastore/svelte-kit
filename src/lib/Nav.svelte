@@ -1,21 +1,18 @@
 <script>
-  import { onMount } from 'svelte'
-  import { page } from '$app/stores'
-  import { api } from '$lib/utils/api'
-  import { logout } from '$lib/utils/auth'
-  import 'bootstrap/dist/css/bootstrap.css'
-  import '../../src/app.css'
+  import {onMount} from 'svelte'
+  import {page} from '$app/stores'
+  import {api} from '$lib/utils/api'
+  import {logout} from '$lib/utils/auth'
   import {variables} from '$lib/utils/variables'
   import Github from '$lib/images/Gighub.svelte'
   import DarkModeToggle from '$lib/themes/DarkModeToggle.svelte'
-  import { theme } from '$lib/themes/themeStore.js'
-  import {userName} from "$lib/utils/username"
+  import {theme} from '$lib/themes/themeStore.js'
+  import {username} from "$lib/utils/username.js"
 
-  let user = $page.data.user
-
+  let user = $page.data ? $page.data.user : null
   let isActive = false
 
-  function toggleNav () {
+  function toggleNav() {
     isActive = !isActive
   }
 
@@ -31,93 +28,97 @@
 
   })
 
-  async function logOut () {
-    const res = await api('POST', 'user/logout')
+  async function userLogOut() {
+    const res = await api('POST', 'user/logout', {id: user.userId})
     if (res) {
-      await logout()
+      return await logout()
     }
   }
 </script>
 
-<nav class="navbar navbar-expand-lg navbar-light {$theme === 'dark' ? 'navbar-dark bg-dark' : 'navbar-light bg-light' }" >
-    <div class='container'>
-        <a class='navbar-brand a-link' href='/'>
-            {variables.appName}
-        </a>
-        <button
-                class='navbar-toggler third-button'
-                on:click={toggleNav}
-                type='button'
-                data-bs-toggle='collapse'
-                data-bs-target='#navbarSupportedContent'
-                aria-controls='navbarSupportedContent'
-                aria-expanded='false'
-                aria-label='Toggle navigation'
-        >
-            <div class="animated-icon {isActive ? 'open' : undefined}"><span></span><span></span><span></span></div>
-        </button>
-        <div class='collapse navbar-collapse' class:show={isActive} id='navbarSupportedContent'>
-            <ul class='navbar-nav me-auto'>
-                <li class='nav-item a-link'>
-                    &nbsp;
+<nav
+  class="navbar navbar-expand-lg navbar-light {$theme === 'dark' ? 'navbar-dark bg-dark' : 'navbar-light bg-light' }">
+  <div class='container'>
+    <a class='navbar-brand a-link' href='/'>
+      {variables.appName}
+    </a>
+    <button
+      class='navbar-toggler third-button'
+      on:click={toggleNav}
+      type='button'
+      data-bs-toggle='collapse'
+      data-bs-target='#navbarSupportedContent'
+      aria-controls='navbarSupportedContent'
+      aria-expanded='false'
+      aria-label='Toggle navigation'
+    >
+      <div class="animated-icon {isActive ? 'open' : undefined}"><span></span><span></span><span></span></div>
+    </button>
+    <div class='collapse navbar-collapse' class:show={isActive} id='navbarSupportedContent'>
+      <ul class='navbar-nav me-auto'>
+        <li class='nav-item a-link'>
+          &nbsp;
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active git a-link" aria-current="page" target='_blank'
+             href="https://github.com/mylastore/svelte-kit.git">
+            <Github/>
+          </a>
+        </li>
+      </ul>
+      <ul class='navbar-nav'>
+        <DarkModeToggle/>
+        {#if !user}
+          <li class='nav-item'>
+            <a class='nav-link a-link' class:active={$page.url.pathname === '/login'} href='/login'>Sing In</a>
+          </li>
+          <li class='nav-item'>
+            <a class='a-link btn btn-outline-secondary' role="button" class:active={$page.url.pathname === '/register'}
+               href='/register'>Sing Up</a>
+          </li>
+        {/if}
+        {#if user}
+          <li class='nav-item dropdown'>
+            <a
+              class:active={$page.url.pathname === `username/profile/${user.userId}`}
+              class='nav-link dropdown-toggle'
+              href='#'
+              id='navbarDropdown'
+              role='button'
+              data-bs-toggle='dropdown'
+              aria-expanded='false'
+            >
+              {$username}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end {$theme === 'dark' ? 'dropdown-menu-dark' : '' }"
+                aria-labelledby='navbarDropdown'>
+              <li>
+                <a
+                  class='dropdown-item a-link'
+                  class:active={$page.url.pathname === `user/profile`}
+                  href='/user/profile'>Profile
+                </a>
+              </li>
+              {#if user.role === 'admin'}
+                <li>
+                  <a class='dropdown-item a-link' class:active={$page.url.pathname === '/admin'} href='/admin'
+                  >Admin</a
+                  >
                 </li>
+              {/if}
+              <li>
+                <hr class='dropdown-divider'/>
+              </li>
+              <li><a class='dropdown-item a-link' on:click|preventDefault={userLogOut} href='#'>Logout</a>
+              </li>
             </ul>
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link active git a-link" aria-current="page" target='_blank' href="https://github.com/mylastore/svelte-kit.git">
-                        <Github />
-                    </a>
-                </li>
-            </ul>
-            <ul class='navbar-nav'>
-                <DarkModeToggle />
-                {#if !user}
-                    <li class='nav-item'>
-                        <a class='nav-link a-link' class:active={$page.url.pathname === '/login'} href='/login'>Sing In</a>
-                    </li>
-                    <li class='nav-item'>
-                        <a class='a-link btn btn-outline-secondary' role="button" class:active={$page.url.pathname === '/register'} href='/register'>Sing Up</a>
-                    </li>
-                {/if}
-                {#if user}
-                    <li class='nav-item dropdown'>
-                        <a
-                                class:active={$page.url.pathname === `user/profile/${user.username}`}
-                                class='nav-link dropdown-toggle'
-                                href='#'
-                                id='navbarDropdown'
-                                role='button'
-                                data-bs-toggle='dropdown'
-                                aria-expanded='false'
-                        >
-                            {$userName ? $userName : user.username}
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end {$theme === 'dark' ? 'dropdown-menu-dark' : '' }" aria-labelledby='navbarDropdown'>
-                            <li>
-                                <a
-                                        class='dropdown-item a-link'
-                                        class:active={$page.url.pathname === `user/profile/${user.username}`}
-                                        href='/user/profile/{user.username}'>Profile</a
-                                >
-                            </li>
-                            {#if user.role === 'admin'}
-                                <li>
-                                    <a class='dropdown-item a-link' class:active={$page.url.pathname === '/admin'} href='/admin'
-                                    >Admin</a
-                                    >
-                                </li>
-                            {/if}
-                            <li>
-                                <hr class='dropdown-divider'/>
-                            </li>
-                            <li><a class='dropdown-item a-link' on:click|preventDefault={logOut} href='#'>Logout</a>
-                            </li>
-                        </ul>
-                    </li>
-                {/if}
-            </ul>
-        </div>
+          </li>
+        {/if}
+      </ul>
     </div>
+  </div>
 </nav>
 
 <style>

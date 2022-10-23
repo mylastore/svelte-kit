@@ -3,13 +3,12 @@
   import {api} from '$lib/utils/api'
   import {notifications} from '$lib/Noti.svelte'
   import Loader from "$lib/loader/Loader.svelte"
-  import {page} from '$app/stores'
 
   let userCount
 
   (async () => {
     try {
-      const res = await api('GET', 'admin/stats', {}, $page.data.token)
+      const res = await api('GET', 'admin/stats', {})
       if (res) {
         return (userCount = Number(res))
       }

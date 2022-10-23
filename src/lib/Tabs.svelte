@@ -11,9 +11,6 @@
 		class:active={$page.url.pathname === `/admin/users/${$page.params.p !== undefined ? $page.params.p.toString() : ''}`}
 		href="/admin/users/1">Users</a
 	>
-	<a class="nav-link" class:active={$page.url.pathname === '/admin/settings'} href="/admin/settings"
-		>Settings</a
-	>
 </nav>
 
 <style>
