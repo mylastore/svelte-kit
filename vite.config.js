@@ -1,8 +1,20 @@
 import { sveltekit } from '@sveltejs/kit/vite'
 
-const config = {
-	plugins: [sveltekit()]
-}
+import { defineConfig } from 'vite'
+import dns from 'dns'
 
-export default config;
+dns.setDefaultResultOrder('verbatim')
+
+export default defineConfig({
+	// omit
+	server: {
+		host: 'localhost',
+		port: '3001',
+		strictPort: true,
+		origin: 'http://localhost:3001'
+	},
+	plugins: [sveltekit()]
+})
+
+//export default config;
 

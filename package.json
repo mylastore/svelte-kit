@@ -2,10 +2,10 @@
   "name": "sveltekit",
   "version": "0.1.0",
   "scripts": {
-    "start": "vite dev --port 3001",
+    "start": "vite dev",
     "build": "vite build",
-    "live": "PORT=3001 node build",
-    "preview": "vite preview -p 3001",
+    "live": "node build",
+    "preview": "vite preview",
     "lint": "prettier --check . && eslint --ignore-path .gitignore .",
     "format": "prettier --write ."
   },
