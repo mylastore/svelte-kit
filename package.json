@@ -4,7 +4,7 @@
   "scripts": {
     "start": "vite dev",
     "build": "vite build",
-    "live": "node build",
+    "live": "node build --p 3001",
     "preview": "vite preview",
     "lint": "prettier --check . && eslint --ignore-path .gitignore .",
     "format": "prettier --write ."
