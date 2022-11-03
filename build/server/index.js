@@ -2536,7 +2536,7 @@ var Server = class {
       public_env: {},
       read,
       root: Root,
-      service_worker: base + "/service-worker.js",
+      service_worker: null,
       app_template,
       app_template_contains_nonce: false,
       error_template,

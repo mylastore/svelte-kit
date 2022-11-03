@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../.svelte-kit/adapter-node/chunks/username.js"],
-  "sourcesContent": ["import { w as writable } from \"./index3.js\";\nimport { b as browser } from \"./api.js\";\nconst username = writable(\"\");\nusername.subscribe((v) => browser);\nexport {\n  username as u\n};\n"],
-  "mappings": ";;;;;;;;AAEA,IAAM,WAAW,SAAS,EAAE;AAC5B,SAAS,UAAU,CAAC,MAAM,OAAO;",
-  "names": []
-}

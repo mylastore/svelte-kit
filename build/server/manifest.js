@@ -3,23 +3,23 @@ import "./chunk-HUBM7RA2.js";
 // .svelte-kit/adapter-node/manifest.js
 var manifest = {
   appDir: "_app",
-  assets: /* @__PURE__ */ new Set(["favicon.ico", "img/1.webp", "img/404.gif", "img/502.gif", "img/github.svg", "robots.txt", "service-worker.js"]),
+  assets: /* @__PURE__ */ new Set(["favicon.ico", "img/1.webp", "img/404.gif", "img/502.gif", "img/github.svg", "robots.txt"]),
   mimeTypes: { ".ico": "image/vnd.microsoft.icon", ".webp": "image/webp", ".gif": "image/gif", ".svg": "image/svg+xml", ".txt": "text/plain" },
   _: {
-    entry: { "file": "_app/immutable/start-26620185.js", "imports": ["_app/immutable/start-26620185.js", "_app/immutable/chunks/preload-helper-aa6bc0ce.js", "_app/immutable/chunks/index-5031b6ad.js", "_app/immutable/chunks/singletons-bea58de7.js", "_app/immutable/chunks/index-9ff150c3.js", "_app/immutable/chunks/index-d9e95725.js"], "stylesheets": [] },
+    entry: { "file": "_app/immutable/start-c36c278c.js", "imports": ["_app/immutable/start-c36c278c.js", "_app/immutable/chunks/preload-helper-aa6bc0ce.js", "_app/immutable/chunks/index-5031b6ad.js", "_app/immutable/chunks/singletons-f95bd5ab.js", "_app/immutable/chunks/index-9ff150c3.js", "_app/immutable/chunks/index-d9e95725.js"], "stylesheets": [] },
     nodes: [
-      () => import("./0-Z6GIQQ2F.js"),
+      () => import("./0-RDQQZVRE.js"),
       () => import("./1-WVRZOD2L.js"),
-      () => import("./2-VYAXW75S.js"),
-      () => import("./3-AYBD7KJS.js"),
-      () => import("./4-M2Q3BZEZ.js"),
-      () => import("./5-KQUNUMGZ.js"),
-      () => import("./6-O4KOJ7FX.js"),
-      () => import("./7-B3ZLKQPX.js"),
-      () => import("./8-ZHZ26B6M.js"),
-      () => import("./9-BDKJ7C4I.js"),
-      () => import("./10-35GOP6DG.js"),
-      () => import("./11-KQ67AXEZ.js")
+      () => import("./2-TVPGEHXZ.js"),
+      () => import("./3-MHVWJHK2.js"),
+      () => import("./4-O7P6TWIR.js"),
+      () => import("./5-QGFHXW32.js"),
+      () => import("./6-YJF3RCRY.js"),
+      () => import("./7-TJL7QH4O.js"),
+      () => import("./8-VP7H2J7Y.js"),
+      () => import("./9-VHPEYVYI.js"),
+      () => import("./10-UP3GV6AK.js"),
+      () => import("./11-GKTXHIMX.js")
     ],
     routes: [
       {
