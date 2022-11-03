@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../.svelte-kit/adapter-node/chunks/hooks.js"],
+  "sourcesContent": ["import * as cookie from \"cookie\";\nasync function handle({ event, resolve }) {\n  const cookies = cookie.parse(event.request.headers.get(\"cookie\") || \"\");\n  event.locals.token = cookies.token ? cookies.token : null;\n  event.locals.user = cookies.user ? JSON.parse(cookies.user) : null;\n  return await resolve(event);\n}\nexport {\n  handle\n};\n"],
+  "mappings": ";;;AAAA,YAAY,YAAY;AACxB,eAAe,OAAO,EAAE,OAAO,QAAQ,GAAG;AACxC,QAAM,UAAiB,aAAM,MAAM,QAAQ,QAAQ,IAAI,QAAQ,KAAK,EAAE;AACtE,QAAM,OAAO,QAAQ,QAAQ,QAAQ,QAAQ,QAAQ;AACrD,QAAM,OAAO,OAAO,QAAQ,OAAO,KAAK,MAAM,QAAQ,IAAI,IAAI;AAC9D,SAAO,MAAM,QAAQ,KAAK;AAC5B;",
+  "names": []
+}

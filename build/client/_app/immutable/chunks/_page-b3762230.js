@@ -1,0 +1,1 @@
+import{r}from"./index-d9e95725.js";async function t({parent:o}){const e=await o();if(!e.token||e.user&&e.user.role!=="admin")throw r(302,"/")}const n=Object.freeze(Object.defineProperty({__proto__:null,load:t},Symbol.toStringTag,{value:"Module"}));export{n as _,t as l};
