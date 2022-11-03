@@ -4,8 +4,8 @@
   "scripts": {
     "start": "vite dev",
     "build": "vite build",
-    "live": "node build --p 3001",
-    "preview": "vite preview",
+    "live": "PORT=3001 node build",
+    "preview": "vite preview -p 3001",
     "lint": "prettier --check . && eslint --ignore-path .gitignore .",
     "format": "prettier --write ."
   },
