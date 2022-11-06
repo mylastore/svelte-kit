@@ -1,0 +1,1 @@
+const a={env:"production",apiDevPath:"https://localhost:8001/api",apiLivePath:"https://papaslive.com/api",appName:"SVELTE KIT",currencyLocation:{symbol:"$",code:"USA"},analyticsID:"UA-12345678-9"};export{a as v};

@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../.svelte-kit/adapter-node/chunks/variables.js"],
-  "sourcesContent": ["const variables = {\n  env: \"production\",\n  apiDevPath: \"http://localhost:8001/api\",\n  apiLivePath: \"https://papaslive.com/api\",\n  appName: \"SVELTE KIT\",\n  currencyLocation: { symbol: \"$\", code: \"USA\" },\n  analyticsID: \"UA-12345678-9\"\n};\nexport {\n  variables as v\n};\n"],
-  "mappings": ";AAAA,IAAM,YAAY;AAAA,EAChB,KAAK;AAAA,EACL,YAAY;AAAA,EACZ,aAAa;AAAA,EACb,SAAS;AAAA,EACT,kBAAkB,EAAE,QAAQ,KAAK,MAAM,MAAM;AAAA,EAC7C,aAAa;AACf;",
-  "names": []
-}

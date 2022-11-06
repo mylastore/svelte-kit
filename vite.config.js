@@ -1,8 +1,36 @@
-import { sveltekit } from '@sveltejs/kit/vite';
+import { sveltekit } from '@sveltejs/kit/vite'
+import fs from 'fs'
 
-/** @type {import('vite').UserConfig} */
-const config = {
-	plugins: [sveltekit()]
-};
+const isDev = 'development'
+let options = {}
+let config = {}
+
+if(isDev){
+	options = {
+		key: fs.readFileSync('/Users/oscarquinteros/localhost-key.pem'),
+		cert: fs.readFileSync('/Users/oscarquinteros/localhost.pem'),
+	}
+	config = {
+		server: {
+			host: 'localhost',
+			port: '3001',
+			https: {
+				key: options.key,
+				cert: options.cert
+			}
+		},
+		plugins: [sveltekit()]
+	}
+} else {
+	/** @type {import('vite').UserConfig} */
+	config = {
+		server: {
+			host: 'localhost',
+			port: '3001',
+			https: {}
+		},
+		plugins: [sveltekit()]
+	}
+}
 
 export default config;

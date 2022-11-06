@@ -2777,7 +2777,7 @@ var Server = class {
       public_env: {},
       read,
       root: Root,
-      service_worker: false,
+      service_worker: true,
       app_template,
       app_template_contains_nonce: false,
       error_template,
@@ -2790,7 +2790,7 @@ var Server = class {
     const pub = Object.fromEntries(entries.filter(([k]) => k.startsWith("PUBLIC_")));
     this.options.public_env = pub;
     if (!this.options.hooks) {
-      const module = await import("./hooks-T7JO7HDC.js");
+      const module = await import("./hooks.server-OA3BXNLM.js");
       if (module.externalFetch) {
         throw new Error("externalFetch has been removed \u2014 use handleFetch instead. See https://github.com/sveltejs/kit/pull/6565 for details");
       }
