@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../.svelte-kit/adapter-node/entries/pages/_error.svelte.js"],
-  "sourcesContent": ["import { c as create_ssr_component } from \"../../chunks/index.js\";\nconst _error_svelte_svelte_type_style_lang = \"\";\nconst css = {\n  code: \"img.svelte-df3w0v{margin:20px}.alert.svelte-df3w0v{max-width:480px;margin:auto}\",\n  map: null\n};\nconst Error = create_ssr_component(($$result, $$props, $$bindings, slots) => {\n  $$result.css.add(css);\n  return `${$$result.head += `${$$result.title = `<title>Not Found!</title>`, \"\"}<meta name=\"${\"robots\"}\" content=\"${\"noindex, nofollow\"}\" data-svelte=\"svelte-8xnzgz\">`, \"\"}\n\n<div class=\"${\"container mt-4\"}\"><div class=\"${\"text-center\"}\"><img class=\"${\"img-fluid svelte-df3w0v\"}\" src=\"${\"/img/404.gif\"}\" width=\"${\"480\"}\" height=\"${\"480\"}\" alt=\"${\"404 Not Found\"}\">\n    <div class=\"${\"alert alert-danger fl svelte-df3w0v\"}\" role=\"${\"alert\"}\"><b>Not Found!</b></div></div>\n</div>`;\n});\nexport {\n  Error as default\n};\n"],
-  "mappings": ";;;;;;AAEA,IAAM,MAAM;AAAA,EACV,MAAM;AAAA,EACN,KAAK;AACP;AACA,IAAM,QAAQ,qBAAqB,CAAC,UAAU,SAAS,YAAY,UAAU;AAC3E,WAAS,IAAI,IAAI,GAAG;AACpB,SAAO,GAAG,SAAS,QAAQ,GAAG,SAAS,QAAQ,6BAA6B,iBAAiB,sBAAsB,qDAAqD;AAAA;AAAA,cAE5J,iCAAiC,8BAA8B,mCAAmC,0BAA0B,kBAAkB,eAAe;AAAA,kBACzJ,gDAAgD;AAAA;AAElE,CAAC;",
-  "names": []
-}
