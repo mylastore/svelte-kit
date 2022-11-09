@@ -1,7 +1,7 @@
 import { sveltekit } from '@sveltejs/kit/vite'
 import fs from 'fs'
 
-const isDev = 'development'
+const isDev = 'production'
 let options = {}
 let config = {}
 
@@ -26,8 +26,7 @@ if(isDev){
 	config = {
 		server: {
 			host: 'localhost',
-			port: '3001',
-			https: {}
+			port: '3001'
 		},
 		plugins: [sveltekit()]
 	}
