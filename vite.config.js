@@ -1,7 +1,7 @@
 import { sveltekit } from '@sveltejs/kit/vite'
 import fs from 'fs'
 
-const isDev = 'production'
+const isDev = false
 let options = {}
 let config = {}
 
