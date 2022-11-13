@@ -30,11 +30,11 @@ if(isDev){
 	config = {
 		server: {
 			host: 'localhost',
-			port: '3001'
-		},
-		https: {
-			key: options.key,
-			cert: options.cert
+			port: '3001',
+			https: {
+				key: options.key,
+				cert: options.cert
+			},
 		},
 		plugins: [sveltekit()]
 	}
