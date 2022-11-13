@@ -1,20 +1,20 @@
-import { sveltekit } from '@sveltejs/kit/vite';
+import { sveltekit } from '@sveltejs/kit/vite'
+
+import { defineConfig } from 'vite'
+import dns from 'dns'
 import fs from "fs";
 
-const options = {
-	key: fs.readFileSync('/home/admin/conf/web/ssl.sveltekit.mylastore.com.key'),
-	cert: fs.readFileSync('/home/admin/conf/web/ssl.sveltekit.mylastore.com.pem')
-}
+dns.setDefaultResultOrder('verbatim')
 
-/** @type {import('vite').UserConfig} */
-const config = {
+export default defineConfig({
 	server: {
 		https: {
-			key: options.key,
-			cert: options.cert
-		}
+			key: fs.readFileSync('/home/admin/conf/web/ssl.sveltekit.mylastore.com.key'),
+			cert: fs.readFileSync('/home/admin/conf/web/ssl.sveltekit.mylastore.com.pem')
+		},
+		host: 'localhost',
+		port: '3001',
+		strictPort: true
 	},
 	plugins: [sveltekit()]
-}
-
-export default config;
+})
