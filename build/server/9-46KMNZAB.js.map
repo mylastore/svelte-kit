@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../.svelte-kit/adapter-node/nodes/9.js"],
-  "sourcesContent": ["\n\nexport const index = 9;\nexport const component = async () => (await import('../entries/pages/user/activation/_token_/_page.svelte.js')).default;\nexport const file = '_app/immutable/components/pages/user/activation/_token_/_page.svelte-47b4cf58.js';\nexport const imports = [\"_app/immutable/components/pages/user/activation/_token_/_page.svelte-47b4cf58.js\",\"_app/immutable/chunks/index-5031b6ad.js\",\"_app/immutable/chunks/api-fa0000df.js\",\"_app/immutable/chunks/variables-8bc12a28.js\",\"_app/immutable/chunks/index-9ff150c3.js\",\"_app/immutable/chunks/stores-1c3e9f80.js\",\"_app/immutable/chunks/singletons-b0b8963f.js\",\"_app/immutable/chunks/navigation-dcff9ac3.js\"];\nexport const stylesheets = [\"_app/immutable/assets/api-5ca8a06d.css\"];\n"],
-  "mappings": ";;;AAEO,IAAM,QAAQ;AACd,IAAM,YAAY,aAAa,MAAM,OAAO,+BAA6D;AACzG,IAAM,OAAO;AACb,IAAM,UAAU,CAAC,oFAAmF,2CAA0C,yCAAwC,+CAA8C,2CAA0C,4CAA2C,gDAA+C,8CAA8C;AACtZ,IAAM,cAAc,CAAC,wCAAwC;",
-  "names": []
-}

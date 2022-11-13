@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../.svelte-kit/adapter-node/chunks/themeStore.js"],
-  "sourcesContent": ["import { w as writable } from \"./index3.js\";\nconst theme = writable(\"dark\");\nexport {\n  theme as t\n};\n"],
-  "mappings": ";;;;;AACA,IAAM,QAAQ,SAAS,MAAM;",
-  "names": []
-}
