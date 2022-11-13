@@ -2,11 +2,10 @@ import { sveltekit } from '@sveltejs/kit/vite'
 import fs from 'fs'
 
 const isDev = false
-let options = {}
 let config = {}
 
 if(isDev){
-	options = {
+	const options = {
 		key: fs.readFileSync('/Users/oscarquinteros/localhost-key.pem'),
 		cert: fs.readFileSync('/Users/oscarquinteros/localhost.pem'),
 	}
@@ -22,11 +21,10 @@ if(isDev){
 		plugins: [sveltekit()]
 	}
 } else {
-	options = {
+	const options = {
 		key: fs.readFileSync('/home/admin/conf/web/ssl.sveltekit.mylastore.com.key'),
 		cert: fs.readFileSync('/home/admin/conf/web/ssl.sveltekit.mylastore.com.pem'),
 	}
-	/** @type {import('vite').UserConfig} */
 	config = {
 		server: {
 			host: 'localhost',
@@ -34,7 +32,7 @@ if(isDev){
 			https: {
 				key: options.key,
 				cert: options.cert
-			},
+			}
 		},
 		plugins: [sveltekit()]
 	}
