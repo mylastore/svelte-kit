@@ -22,11 +22,19 @@ if(isDev){
 		plugins: [sveltekit()]
 	}
 } else {
+	options = {
+		key: fs.readFileSync('/home/admin/conf/web/ssl.sveltekit.mylastore.com.key'),
+		cert: fs.readFileSync('/home/admin/conf/web/ssl.sveltekit.mylastore.com.pem'),
+	}
 	/** @type {import('vite').UserConfig} */
 	config = {
 		server: {
 			host: 'localhost',
 			port: '3001'
+		},
+		https: {
+			key: options.key,
+			cert: options.cert
 		},
 		plugins: [sveltekit()]
 	}
