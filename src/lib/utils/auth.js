@@ -9,15 +9,15 @@ export const handleSession = async (res) => {
 
 export const logout = async () => {
   if (typeof window != 'undefined') {
-    Cookies.remove('user', { path: '/', expires: 30, domain: 'sveltekit.mylastore.com' }) // removed!
+    await Cookies.remove('user', { path: '', expires: 30 }) // removed!
     browser && localStorage.removeItem('username')
-    window.location.replace('/')
+    return window.location.replace('')
   }
 }
 
 
 export const setUser = async (data) => {
   if (browser) {
-    await Cookies.set('user', data, { path: '/', expires: 30, domain: 'sveltekit.mylastore.com'})
+    return await Cookies.set('user', data, { path: '', expires: 30})
   }
 }
