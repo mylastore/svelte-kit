@@ -4,7 +4,7 @@
   "scripts": {
     "start": "vite dev --port 3001",
     "build": "NODE_ENV=production vite build",
-    "live": "NODE_ENV=production PORT=3001 HOST=sveltekit.mylastore.com ORIGIN=https://sveltekit.mylastore.com node build",
+    "live": "NODE_ENV=production PORT=3001 HOST=147.182.232.14:3001 ORIGIN=https://sveltekit.mylastore.com node build",
     "preview": "vite preview --port 3001",
     "lint": "prettier --check . && eslint --ignore-path .gitignore .",
     "format": "prettier --write ."
