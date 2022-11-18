@@ -9,7 +9,7 @@ export const handleSession = async (res) => {
 
 export const logout = async () => {
   if (typeof window != 'undefined') {
-    await removeCookie('user')
+    await removeCookie('user',  {maxAge: 3.154e10})
     browser && localStorage.removeItem('username')
     window.location.replace('/')
   }
@@ -20,14 +20,13 @@ export const setCookie = async (key, value) => {
 }
 
 export const removeCookie = async (key) => {
-  if (browser) {
-    await Cookies.remove(key)
-  }
+  await Cookies.remove(key)
+
 }
 
 
 export const setUser = async (data) => {
-  if(browser){
-    await setCookie('user', data.user, {maxAge: 24 * 60 * 60 * 1000} )
+  if (browser) {
+    await setCookie('user', data.user, {maxAge: 3.154e10})
   }
 }
