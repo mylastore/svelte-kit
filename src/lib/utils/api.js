@@ -22,19 +22,17 @@ export const api = (method, path, data) => {
   })
     .then(async res => {
       const response = await res.json()
-      if(response){
-        browser && loaderStatus.update(()=> 200)
-        if (response.status >= 400) {
-          browser && notifications.push(response.message)
-          await handleSession(response)
-          return true
-        }
-        return await response
+      browser && loaderStatus.update(() => 200)
+      if (res.status === 440) return await handleSession(response)
+      if (response.status >= 400) {
+        return browser && notifications.push(response.message)
       }
+      return response
+
     })
-    .catch( () => {
+    .catch(() => {
       // no network connection so we send here a general error message
-      browser && loaderStatus.update(()=> 502)
+      browser && loaderStatus.update(() => 502)
       return browser && notifications.push('Oops! Something is wrong. Please try later.')
     })
 }
