@@ -9,7 +9,7 @@ export const handleSession = async (res) => {
 
 export const logout = async () => {
   if (typeof window != 'undefined') {
-    await Cookies.remove('user', { path: '', expires: 30 }) // removed!
+    await Cookies.remove('user', { path: '', expires: 30, secure: false, httpOnly: true }) // removed!
     browser && localStorage.removeItem('username')
     return window.location.replace('')
   }
@@ -18,6 +18,6 @@ export const logout = async () => {
 
 export const setUser = async (data) => {
   if (browser) {
-    return await Cookies.set('user', data, { path: '', expires: 30})
+    return await Cookies.set('user', data, { path: '', expires: 30, secure: false, httpOnly: true})
   }
 }
