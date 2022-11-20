@@ -4,7 +4,7 @@ dotenv.config()
 import https from "https"
 import fs from "fs"
 import Koa from 'koa'
-import {handler} from './build/handlers.js'
+import { handler } from './build/handler.js'
 
 const server = new Koa()
 const options = {
