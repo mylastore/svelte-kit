@@ -19,3 +19,5 @@ try{
 }catch (err){
   console.error('Failed to start HTTPS server\n', err, (err && err.stack));
 }
+
+module.exports = {server: server}
