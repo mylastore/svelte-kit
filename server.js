@@ -1,8 +1,10 @@
-require('dotenv').config()
-const https = require('https')
-const fs = require('fs')
-const Koa = require('koa')
-const build = require('./build/handler.js')
+
+import dotenv from 'dotenv'
+dotenv.config()
+import https from "https"
+import fs from "fs"
+import Koa from 'koa'
+import {handler} from './build/handlers.js'
 
 const server = new Koa()
 const options = {
@@ -10,7 +12,7 @@ const options = {
   cert: fs.readFileSync(process.env.CUSTOMP_LIVE_CERT)
 }
 
-server.use(build.handler)
+server.use(handler)
 
 try{
   https.createServer(options, server.callback()).listen('3001')
