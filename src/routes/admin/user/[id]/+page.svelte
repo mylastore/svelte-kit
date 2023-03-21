@@ -5,12 +5,9 @@
   import {page} from '$app/stores'
   import Tabs from '$lib/Tabs.svelte'
   import {notifications} from '$lib/Noti.svelte'
-  import Loader from '$lib/loader/Loader.svelte'
 
   let userAbout = ''
-  let userEmail = ''
   let userAvatar = ''
-  let userName = ''
   let name = ''
   let userRole = ''
   let userWebsite = ''
@@ -47,31 +44,30 @@
   <meta name="robots" content="noindex, nofollow"/>
 </svelte:head>
 
-<Loader>
-  <Tabs/>
-  <div class="container">
-    <div class="mt-5 d-flex justify-content-center">
-      <div class="card text-center" style="max-width: 30em; width: 30em;">
-        <div class="card-header">
-          <h1 class="card-header-title">User Profile</h1>
-        </div>
-        <div class="card-body">
-          <img class="center avatar" src={userAvatar} alt="username image"/>
-          <br/>
-          <div class="profile">
-            {#if name}<p><b>Name: </b> <span>{name}</span></p>{/if}
-            {#if userGender}<p><b>Gender: </b> <span>{userGender}</span></p>{/if}
-            {#if userLocation}<p><b>Location: </b> <span>{userLocation}</span></p>{/if}
-            {#if userWebsite}<p><b>Website: </b> <span>{userWebsite}</span></p>{/if}
-            {#if userAbout}<p><b>About: </b> <span>{userAbout}</span></p>{/if}
-            <p><b>Role: </b> <span class="capitalize">{userRole}</span></p>
-            <p><b>Member Since:</b> {memberSince}</p>
-          </div>
+
+<Tabs/>
+<div class="container">
+  <div class="mt-5 d-flex justify-content-center">
+    <div class="card text-center" style="max-width: 30em; width: 30em;">
+      <div class="card-header">
+        <h1 class="card-header-title">User Profile</h1>
+      </div>
+      <div class="card-body">
+        <img class="center avatar" src={userAvatar} alt="username image"/>
+        <br/>
+        <div class="profile">
+          {#if name}<p><b>Name: </b> <span>{name}</span></p>{/if}
+          {#if userGender}<p><b>Gender: </b> <span>{userGender}</span></p>{/if}
+          {#if userLocation}<p><b>Location: </b> <span>{userLocation}</span></p>{/if}
+          {#if userWebsite}<p><b>Website: </b> <span>{userWebsite}</span></p>{/if}
+          {#if userAbout}<p><b>About: </b> <span>{userAbout}</span></p>{/if}
+          <p><b>Role: </b> <span class="capitalize">{userRole}</span></p>
+          <p><b>Member Since:</b> {memberSince}</p>
         </div>
       </div>
     </div>
   </div>
-</Loader>
+</div>
 
 
 <style>

@@ -14,7 +14,6 @@
   $: passwordFormIsValid = passwordValid && passwordConfirmValid
 
   async function submitForm() {
-    const resetForm = document.getElementById('password-reset-form')
     const userData = {
       password: password,
       passwordResetToken: $page.params.token
@@ -22,8 +21,9 @@
     try {
       const res = await api('POST', 'user/reset-password', userData)
       if (res) {
-        notifications.push('Password updated successfully', 'success')
-        resetForm.reset()
+        notifications.push('Password was updated successfully', 'success')
+        password = ''
+        passwordConfirmation = ''
         return goto('/login')
       }
     } catch (err) {
@@ -55,7 +55,7 @@
           <Input
               id="passwordConfirmation"
               label="Password Confirmation"
-              help="Password minimum length 8, must have one capital letter, 1 number, and one unique character."
+              help="Password minimum length is 8 and must have one capital letter."
               type="password"
               valid={passwordConfirmValid}
               validityMessage="Passwords did not match"

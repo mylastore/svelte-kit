@@ -6,7 +6,7 @@ export function isRequire (str) {
 
 // 8 characters or more, one capital letter and one special character
 export function isPassword (val) {
-  return new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(.{8,50})$').test(val)
+  return new RegExp('^(?=.*[a-z])(?=.*[A-Z])(.{8,50})$').test(val)
 }
 
 export function isEmail (val) {

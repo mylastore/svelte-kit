@@ -2,7 +2,7 @@
 
 Sveltekit template - inspired by [Hackathon Starter](https://hackathon-starter.walcony.com)
 
-Koa API repo can be found here [koa-api](https://github.com/mylastore/koa-blog-api)
+Koa API with authentication, refresh token, password reset - repo can be found here [koa-api](https://github.com/mylastore/koa-blog-api)
 
 ## DEMO
 [Demo App](https://sveltekit.mylastore.com/)
@@ -15,22 +15,23 @@ Koa API repo can be found here [koa-api](https://github.com/mylastore/koa-blog-a
 - User profile page with [gravatar](https://en.gravatar.com/) if available else displays a default image
 - User forgot password
 - User roles (customer, admin)
-- Admin panel section displaying all register users, notification settings and stats
+- Admin panel section displaying all register users and stats
 - Pagination inspired by [svelte-paginate](https://github.com/TahaSh/svelte-paginate#readme)
 
 ## Getting started
+Rename the demo.env to .env enter your info
 
     git clone https://github.com/mylastore/svelte-kit
 
     npm install && npm start
 
-Now head over to your favorite browser and open up `localhost:3000` and you are ready to go.
+Now head over to your favorite browser and open up `localhost:3001` and you are ready to go.
 
-## IMPORTANT! Start the [API](https://github.com/mylastore/koa-blog-api) repository and follow the instructions on how to seed the sample data for authentication to work
+## IMPORTANT! Start the [API](https://github.com/mylastore/koa-blog-api) repository and follow the instructions on how to seed the sample users data
 
-Login as ADMIN me@me.com and Password#1
+Login as ADMIN me@me.com and Password1
 
-Login as customer me1@me.com Password#1
+Login as customer me1@me.com Password1
 
 ## License
 

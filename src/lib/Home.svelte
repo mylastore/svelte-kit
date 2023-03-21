@@ -4,7 +4,6 @@
 
 </script>
 
-
 <div class="{$theme === 'dark' ? 'hero-bg-dark' : 'hero-bg' }">
   <div class="container">
     <div class="center">

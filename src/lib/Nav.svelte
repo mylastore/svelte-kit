@@ -21,7 +21,6 @@
     await import('bootstrap/js/dist/collapse')
 
     var elements = document.getElementsByClassName('a-link')
-
     for (var i = 0; i < elements.length; i++) {
       elements[i].addEventListener('click', toggleNav, false)
     }
@@ -31,7 +30,7 @@
   async function userLogOut() {
     const res = await api('POST', 'user/logout', {id: user.userId})
     if (res) {
-      return await logout()
+      await logout()
     }
   }
 </script>
@@ -90,7 +89,7 @@
               data-bs-toggle='dropdown'
               aria-expanded='false'
             >
-              {$username}
+              {$username} <img class="rounded-circle" src="{user.avatar}" alt="Profile" width="40" height="40"/>
             </a>
             <ul class="dropdown-menu dropdown-menu-end {$theme === 'dark' ? 'dropdown-menu-dark' : '' }"
                 aria-labelledby='navbarDropdown'>

@@ -86,7 +86,7 @@
             <Input
               id="passwordConfirmation"
               label="Confirm Password"
-              help="Password minimum length 8, must have one capital letter, 1 number, and one unique character."
+              help="Password minimum length 8 and must have one capital letter."
               type="password"
               valid={passwordConfirmValid}
               validityMessage="Passwords did not match"

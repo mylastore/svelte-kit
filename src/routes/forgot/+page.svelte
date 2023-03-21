@@ -3,11 +3,11 @@
   import Input from '$lib/Input.svelte'
   import {api} from '$lib/utils/api'
   import {notifications} from '$lib/Noti.svelte'
+  import {goto} from "$app/navigation";
 
   let email = ''
 
   $: emailValid = isEmail(email)
-  $: formIsValid = emailValid
 
   async function submitForm() {
     const forgotForm = document.getElementById('forgot-form')
@@ -15,7 +15,9 @@
       const res = await api('POST', 'user/forgot', {email})
       if(res){
         notifications.push(res.message, 'success')
-        return forgotForm.reset()
+        email = ''
+        forgotForm.reset()
+        return await goto('/login')
       }
     } catch (err) {
       notifications.push(err.message)
@@ -47,7 +49,7 @@
           <button
               class="btn btn-danger btn-lg"
               on:click|preventDefault={submitForm}
-              disabled={!formIsValid}
+              disabled={!emailValid}
           >
             Reset Password
           </button>

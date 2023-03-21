@@ -1,24 +1,35 @@
-import { sveltekit } from '@sveltejs/kit/vite'
+import {sveltekit} from '@sveltejs/kit/vite'
+import fs from "fs"
 
-import { defineConfig } from 'vite'
-import dns from 'dns'
-import fs from "fs";
+let key
+let pem
 
-dns.setDefaultResultOrder('verbatim')
-const isDev = false
+const isDev = true
 
-const key = isDev ? fs.readFileSync('/Users/oscarquinteros/localhost-key.pem') : fs.readFileSync('/home/admin/conf/web/ssl.sveltekit.mylastore.com.key')
-const pem = isDev ? fs.readFileSync('/Users/oscarquinteros/localhost.pem') : fs.readFileSync('/home/admin/conf/web/ssl.sveltekit.mylastore.com.pem')
+key = isDev && fs.readFileSync('/Users/oscarquinteros/.localhost-ssl/localhost.key')
+pem = isDev && fs.readFileSync('/Users/oscarquinteros/.localhost-ssl/localhost.crt')
 
-export default defineConfig({
-	server: {
-		https: {
-			key: key,
-			cert: pem,
-		},
-		host: 'localhost',
-		port: '3001',
-		strictPort: true
-	},
-	plugins: [sveltekit()]
-})
+const conf = isDev ?
+  {
+    server: {
+      https: {
+        key: key,
+        cert: pem,
+      },
+      host: 'localhost',
+      port: '3007',
+      strictPort: true
+    },
+    plugins: [sveltekit()]
+  }
+  :
+  {
+    server: {
+      host: 'localhost',
+      port: '3007',
+      strictPort: true
+    },
+    plugins: [sveltekit()]
+  }
+
+export default conf
