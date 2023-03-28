@@ -1,6 +1,6 @@
 import fetchPonyfill from "fetch-ponyfill"
 import {variables} from "$lib/utils/variables.js"
-import {handleSession} from "$lib/utils/auth.js"
+import {logout} from "$lib/utils/auth.js"
 import {notifications} from "$lib/Noti.svelte"
 import {browser} from "$lib/utils/browser.js"
 
@@ -21,7 +21,7 @@ export const api = (method, path, data) => {
   })
     .then(async res => {
       const response = await res.json()
-      if (res.status === 440) return await handleSession()
+      if (res.status === 440) return await logout()
       if (response.status >= 400) {
         return browser && notifications.push(response.message)
       }

@@ -10,6 +10,7 @@
   import {username} from "$lib/utils/username.js"
 
   export let data
+  export let token
 
   let {user} = data
   let password = ''
@@ -189,11 +190,12 @@
                     value={name}
                     valid={nameRequired}
                     validityMessage="Name is required"
-                    on:input={(event) => (name = event.target.value)}
+                    disabled="true"
+                    className="not-allowed"
                 />
                 <div class="field">
                   <label for="email">Email*</label>
-                  <input class="form-control" id="email" type="email" value={email} disabled/>
+                  <input class="form-control disabled not-allowed" id="email" type="email" value={email} disabled/>
                   <p class="help">Email can not be updated.</p>
                 </div>
                 <Input

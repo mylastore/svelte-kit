@@ -36,20 +36,20 @@
 </script>
 
 <nav
-  class="navbar navbar-expand-lg navbar-light {$theme === 'dark' ? 'navbar-dark bg-dark' : 'navbar-light bg-light' }">
+    class="navbar navbar-expand-lg navbar-light {$theme === 'dark' ? 'navbar-dark bg-dark' : 'navbar-light bg-light' }">
   <div class='container'>
     <a class='navbar-brand a-link' href='/'>
       {variables.appName}
     </a>
     <button
-      class='navbar-toggler third-button'
-      on:click={toggleNav}
-      type='button'
-      data-bs-toggle='collapse'
-      data-bs-target='#navbarSupportedContent'
-      aria-controls='navbarSupportedContent'
-      aria-expanded='false'
-      aria-label='Toggle navigation'
+        class='navbar-toggler third-button'
+        on:click={toggleNav}
+        type='button'
+        data-bs-toggle='collapse'
+        data-bs-target='#navbarSupportedContent'
+        aria-controls='navbarSupportedContent'
+        aria-expanded='false'
+        aria-label='Toggle navigation'
     >
       <div class="animated-icon {isActive ? 'open' : undefined}"><span></span><span></span><span></span></div>
     </button>
@@ -81,23 +81,23 @@
         {#if user}
           <li class='nav-item dropdown'>
             <a
-              class:active={$page.url.pathname === `username/profile/${user.userId}`}
-              class='nav-link dropdown-toggle'
-              href='#'
-              id='navbarDropdown'
-              role='button'
-              data-bs-toggle='dropdown'
-              aria-expanded='false'
+                class:active={$page.url.pathname === `username/profile/${user.userId}`}
+                class='nav-link dropdown-toggle'
+                href='#'
+                id='navbarDropdown'
+                role='button'
+                data-bs-toggle='dropdown'
+                aria-expanded='false'
             >
-              {$username} <img class="rounded-circle" src="{user.avatar}" alt="Profile" width="40" height="40"/>
+              {$username} <img class="rounded-circle" src="{user.avatar}" alt="Profile" width="30" height="30"/>
             </a>
             <ul class="dropdown-menu dropdown-menu-end {$theme === 'dark' ? 'dropdown-menu-dark' : '' }"
                 aria-labelledby='navbarDropdown'>
               <li>
                 <a
-                  class='dropdown-item a-link'
-                  class:active={$page.url.pathname === `user/profile`}
-                  href='/user/profile'>Profile
+                    class='dropdown-item a-link'
+                    class:active={$page.url.pathname === `user/profile`}
+                    href='/user/profile'>Profile
                 </a>
               </li>
               {#if user.role === 'admin'}
@@ -121,88 +121,88 @@
 </nav>
 
 <style>
-    .animated-icon {
-        width: 30px;
-        height: 22px;
-        position: relative;
-        margin: 0;
-        -webkit-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        transform: rotate(0deg);
-        -webkit-transition: .5s ease-in-out;
-        -moz-transition: .5s ease-in-out;
-        -o-transition: .5s ease-in-out;
-        transition: .5s ease-in-out;
-        cursor: pointer;
-    }
+  .animated-icon {
+    width: 30px;
+    height: 22px;
+    position: relative;
+    margin: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+  }
 
-    .animated-icon span {
-        display: block;
-        position: absolute;
-        height: 3px;
-        width: 100%;
-        border-radius: 9px;
-        opacity: 1;
-        left: 0;
-        -webkit-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        transform: rotate(0deg);
-        -webkit-transition: .25s ease-in-out;
-        -moz-transition: .25s ease-in-out;
-        -o-transition: .25s ease-in-out;
-        transition: .25s ease-in-out;
-    }
+  .animated-icon span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+  }
 
-    .animated-icon span {
-        background: red;
-    }
+  .animated-icon span {
+    background: red;
+  }
 
-    .animated-icon span:nth-child(1) {
-        top: 1px;
-        -webkit-transform-origin: left center;
-        -moz-transform-origin: left center;
-        -o-transform-origin: left center;
-        transform-origin: left center;
-    }
+  .animated-icon span:nth-child(1) {
+    top: 1px;
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+  }
 
-    .animated-icon span:nth-child(2) {
-        top: 10px;
-        -webkit-transform-origin: left center;
-        -moz-transform-origin: left center;
-        -o-transform-origin: left center;
-        transform-origin: left center;
-    }
+  .animated-icon span:nth-child(2) {
+    top: 10px;
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+  }
 
-    .animated-icon span:nth-child(3) {
-        top: 19px;
-        -webkit-transform-origin: left center;
-        -moz-transform-origin: left center;
-        -o-transform-origin: left center;
-        transform-origin: left center;
-    }
+  .animated-icon span:nth-child(3) {
+    top: 19px;
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+  }
 
-    .animated-icon.open span:nth-child(1) {
-        -webkit-transform: rotate(45deg);
-        -moz-transform: rotate(45deg);
-        -o-transform: rotate(45deg);
-        transform: rotate(45deg);
-        top: 0px;
-        left: 3px;
-    }
+  .animated-icon.open span:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: 0px;
+    left: 3px;
+  }
 
-    .animated-icon.open span:nth-child(2) {
-        width: 0%;
-        opacity: 0;
-    }
+  .animated-icon.open span:nth-child(2) {
+    width: 0%;
+    opacity: 0;
+  }
 
-    .animated-icon.open span:nth-child(3) {
-        -webkit-transform: rotate(-45deg);
-        -moz-transform: rotate(-45deg);
-        -o-transform: rotate(-45deg);
-        transform: rotate(-45deg);
-        top: 21px;
-        left: 3px;
-    }
+  .animated-icon.open span:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 21px;
+    left: 3px;
+  }
 </style>

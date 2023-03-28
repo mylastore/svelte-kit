@@ -9,6 +9,7 @@
 	export let className = ''
 	export let validityMessage = ''
 	export let help
+	export let disabled = false
 
 	let touched = false
 </script>
@@ -34,6 +35,7 @@
 			{type}
 			{id}
 			{value}
+			{disabled}
 			on:input
 			on:blur={() => (touched = true)}
 		/>
@@ -55,5 +57,8 @@
 	.error-message {
 		color: red;
 		margin: 0.25rem 0;
+	}
+	:global(.not-allowed){
+		cursor: not-allowed;
 	}
 </style>
