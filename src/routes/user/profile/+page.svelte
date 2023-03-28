@@ -62,7 +62,6 @@
   async function updateUser() {
     try {
       const userObject = {
-        name,
         website,
         location,
         gender,
