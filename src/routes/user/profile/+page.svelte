@@ -7,10 +7,8 @@
   import {notifications} from '$lib/Noti.svelte'
   import {AlertTriangleIcon} from 'svelte-feather-icons'
   import {api} from "$lib/utils/api.js"
-  import {username} from "$lib/utils/username.js"
 
   export let data
-  export let token
 
   let {user} = data
   let password = ''
@@ -70,7 +68,6 @@
       }
       const res = await api('PATCH', `user/account`, userObject)
       if (res) {
-        $username = res.user.name
         return notifications.push('User profile was updated!', 'success')
       }
     } catch (err) {

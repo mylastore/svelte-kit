@@ -3,9 +3,14 @@
   import {api} from '$lib/utils/api.js'
   import {notifications} from '$lib/Noti.svelte'
   import {username} from '$lib/utils/username.js'
+  import { isRequire } from '$lib/utils/validation.js'
 
   let email = ''
   let password = ''
+
+  $: emailValid = isRequire(email)
+  $: passwordValid = isRequire(password)
+  $: formValid = emailValid && passwordValid
 
   async function submitForm(e) {
     e.preventDefault()
@@ -27,7 +32,7 @@
   }
 
   function handleKeyDown(e) {
-    if (e.keyCode === 13) {
+    if (formValid && e.keyCode === 13) {
       submitForm(e)
     }
   }
@@ -52,7 +57,8 @@
           <Input
               id='email'
               label='Email'
-              validityMessage='Please enter a valid email.'
+              valid={emailValid}
+              validityMessage='Email is required.'
               value={email}
               className='is-large'
               on:input={(event) => (email = event.target.value)}
@@ -60,9 +66,9 @@
           <Input
               id='password'
               label='Password'
-              help="Password must be at least 8 characters & a max of 50."
+              valid={passwordValid}
+              validityMessage='Password is required.'
               type='password'
-              validityMessage='Please enter a valid password.'
               value={password}
               className='is-large'
               on:input={(event) => (password = event.target.value)}
@@ -77,7 +83,8 @@
           <button
               class='btn btn-primary btn-lg'
               on:click={submitForm}
-          >
+              class:disabled={!formValid}
+              disabled={!formValid}>
             Sing In
           </button>
         </div>
@@ -94,7 +101,7 @@
         <span>Test Users</span>
       </div>
       <div class='card-body'>
-        <p>Admin: me@me.com password1</p>
+        <p>Admin: me1@me.com password1</p>
         <p>User: me2@me.com password1</p>
       </div>
     </div>

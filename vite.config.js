@@ -17,7 +17,7 @@ const conf = isDev ?
         cert: pem,
       },
       host: 'localhost',
-      port: '3007',
+      port: '3001',
       strictPort: true
     },
     plugins: [sveltekit()]
@@ -26,7 +26,7 @@ const conf = isDev ?
   {
     server: {
       host: 'localhost',
-      port: '3007',
+      port: '3001',
       strictPort: true
     },
     plugins: [sveltekit()]

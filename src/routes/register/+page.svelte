@@ -1,23 +1,24 @@
 <script>
   import Input from '$lib/Input.svelte'
   import { api } from '$lib/utils/api'
-  import { isEmail, isPassword } from '$lib/utils/validation'
   import { notifications } from '$lib/Noti.svelte'
   import {goto} from "$app/navigation";
+  import { isRequire } from '$lib/utils/validation.js'
 
   let name = ''
   let email = ''
   let password = ''
   let passwordConfirmation = ''
 
-  $: emailValid = isEmail(email)
-  $: passwordValid = isPassword(password)
+  $: emailValid = isRequire(email)
+  $: passwordValid = isRequire(password)
+  $: nameValid = isRequire(name)
   $: passwordConfirmValid = password === passwordConfirmation
-  $: formIsValid = emailValid && passwordValid && passwordConfirmValid
+  $: formIsValid = nameValid && emailValid && passwordValid && passwordConfirmValid
 
   async function submitForm () {
     try {
-      const res = await api('POST', 'user/account-activation', { name, email, password })
+      const res = await api('POST', 'user/account-activation', { name, email, password, passwordConfirmation })
       if(res){
         email = ''
         password = ''
@@ -51,7 +52,7 @@
         <div class="card-body">
           <div>
             <h4><strong>Sing Up</strong></h4>
-            <p>Please note that our services are only available in the United States.</p>
+            <p>We only offer our services in the <b>United States.</b></p>
           </div>
           <form>
             <Input
@@ -59,7 +60,7 @@
               label="Name"
               help="Please, enter your complete legal name if you will be performing transactions."
               valid={name}
-              validityMessage="Please enter a valid email."
+              validityMessage="Name is required"
               value={name}
               className="is-large"
               on:input={(event) => (name = event.target.value)}
@@ -68,7 +69,7 @@
               id="email"
               label="Email"
               valid={emailValid}
-              validityMessage="Please enter a valid email."
+              validityMessage="Email is required."
               value={email}
               className="is-large"
               on:input={(event) => (email = event.target.value)}
@@ -78,7 +79,7 @@
               label="Password"
               type="password"
               valid={passwordValid}
-              validityMessage="Please enter a valid password."
+              validityMessage="Password is required."
               value={password}
               className="is-large"
               on:input={(event) => (password = event.target.value)}
@@ -98,6 +99,7 @@
               <button
                 class="btn btn-primary btn-lg mt-2"
                 on:click|preventDefault={submitForm}
+                class:disabled={!formIsValid}
                 disabled={!formIsValid}
               >
                 Sing Up
@@ -117,5 +119,8 @@
 <style>
     .register {
         width: 25rem;
+    }
+    .disabled {
+      pointer-events: none;
     }
 </style>
