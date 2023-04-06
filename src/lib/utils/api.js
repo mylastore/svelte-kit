@@ -28,7 +28,6 @@ export const api = async (method, path, data) => {
       return res
     }
 
-
   }catch (err){
     if (err && err instanceof Error) {
       return browser && notifications.push('Something went wrong. Please try later.')
@@ -36,30 +35,5 @@ export const api = async (method, path, data) => {
       throw err
     }
   }
-
-  // return fetch(`${apiPath}/${path}`, {
-  //   method: method,
-  //   'credentials': 'include',
-  //   headers: {
-  //     Accept: 'application/json',
-  //     'Content-Type': 'application/json'
-  //   },
-  //   ...(!noData ? {body: JSON.stringify(data)} : null)
-  // })
-  //   .then(async res => {
-  //     const response = await res.json()
-  //     if (response.status === 440) return await logout()
-  //     if (response.status >= 400) {
-  //       return browser && notifications.push(response.message)
-  //     }
-  //     return response
-  //   })
-  //   .catch((err) => {
-  //     if (err && err instanceof Error) {
-  //       return browser && notifications.push('Something went wrong. Please try later.')
-  //     } else {
-  //       throw err
-  //     }
-  //   })
 
 }
