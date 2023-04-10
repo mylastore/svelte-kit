@@ -1,20 +1,17 @@
 import {sveltekit} from '@sveltejs/kit/vite'
-import fs from "fs"
-
-let key
-let pem
+import fs from 'fs'
 
 const isDev = true
 
-key = isDev && fs.readFileSync('/Users/oscarquinteros/.localhost-ssl/localhost.key')
-pem = isDev && fs.readFileSync('/Users/oscarquinteros/.localhost-ssl/localhost.crt')
+let key = isDev && fs.readFileSync('certs/localhost.key')
+let cert = isDev && fs.readFileSync('certs/localhost.crt')
 
 const conf = isDev ?
   {
     server: {
       https: {
-        key: key,
-        cert: pem,
+        key,
+        cert,
       },
       host: 'localhost',
       port: '3001',
@@ -26,10 +23,10 @@ const conf = isDev ?
   {
     server: {
       host: 'localhost',
-      port: '3001',
+      port: '3007',
       strictPort: true
     },
     plugins: [sveltekit()]
   }
 
-export default conf
+  export default conf
