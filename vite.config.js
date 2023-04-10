@@ -3,8 +3,8 @@ import fs from 'fs'
 
 const isDev = true
 
-let key = isDev && fs.readFileSync('certs/localhost.key')
-let cert = isDev && fs.readFileSync('certs/localhost.crt')
+let key = isDev && fs.readFileSync('certs/localhost/localhost.key')
+let cert = isDev && fs.readFileSync('certs/localhost/localhost.crt')
 
 const conf = isDev ?
   {
