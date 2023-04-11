@@ -3,15 +3,15 @@ import fs from 'fs'
 
 const isDev = true
 
-let key = isDev && fs.readFileSync('certs/localhost/localhost.key')
-let cert = isDev && fs.readFileSync('certs/localhost/localhost.crt')
+let key = isDev && fs.readFileSync('secrets/certs/localhost.key')
+let cert = isDev && fs.readFileSync('secrets/certs/localhost.crt')
 
 const conf = isDev ?
   {
     server: {
       https: {
-        key,
-        cert,
+        key: key,
+        cert: cert,
       },
       host: 'localhost',
       port: '3001',
