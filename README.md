@@ -19,7 +19,8 @@ Koa API with authentication, refresh token, password reset - repo can be found h
 - Pagination inspired by [svelte-paginate](https://github.com/TahaSh/svelte-paginate#readme)
 
 ## Getting started
-Rename the demo.env to .env enter your info
+- Rename the demo.env to .env enter your info
+- Create certs directory inside the secrets directory and generate local certs inside. Secure cookie are used on local development (to simulate production issue).
 
     git clone https://github.com/mylastore/svelte-kit
 
