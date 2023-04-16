@@ -14,7 +14,8 @@
   $: passwordValid = isRequire(password)
   $: nameValid = isRequire(name)
   $: passwordConfirmValid = password === passwordConfirmation
-  $: formIsValid = nameValid && emailValid && passwordValid && passwordConfirmValid
+  //$: formIsValid = nameValid && emailValid && passwordValid && passwordConfirmValid
+  $: formIsValid = true
 
   async function submitForm () {
     try {
