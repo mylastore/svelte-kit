@@ -17,7 +17,7 @@
 
   async function getUser() {
     try {
-      const res = await api('GET', `admin/user/${$page.params.id}`, {})
+      const res = await api('GET', `admin/user/${$page.params.id}`)
       if (res) {
         userAvatar = res.avatar
         userRole = res.role

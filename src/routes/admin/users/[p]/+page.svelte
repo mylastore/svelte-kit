@@ -1,5 +1,5 @@
 <script>
-  import {api} from '$lib/utils/api'
+  import {api} from '$lib/utils/api.js'
   import timeAgo from '$lib/utils/timeAgo'
   import {paginate, PaginationNav} from '$lib/paginate'
   import Tabs from '$lib/Tabs.svelte'
@@ -20,7 +20,8 @@
 
   async function getAllUsers(pageNumber) {
     try {
-      const res = await api('GET', `admin/users/${pageNumber}`, {}, $page.data.token)
+      const res = await api('GET', `admin/users/${pageNumber}`)
+      console.log('res? ',res)
       if (res) {
         pageSize = res.perPage
         items = res.users

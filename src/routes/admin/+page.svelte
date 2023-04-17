@@ -7,7 +7,7 @@
 
   (async () => {
     try {
-      const res = await api('GET', 'admin/stats', {})
+      const res = await api('GET', 'admin/stats')
       if (res) {
         return (userCount = Number(res))
       }

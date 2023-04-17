@@ -8,8 +8,8 @@ const {fetch} = fetchPonyfill()
 const apiPath = variables.env === 'development' ? variables.apiDevPath : variables.apiLivePath
 
 export const api = async (method, path, data) => {
-  const noData = method === 'GET' || method === 'DELETE'
-
+  const gotData =  typeof data === 'object' && !Array.isArray(data) && data !== null
+  const formData = data instanceof FormData
   try{
     const response = (await fetch(`${apiPath}/${path}`, {
       method: method,
@@ -18,10 +18,13 @@ export const api = async (method, path, data) => {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
-      ...(!noData ? { body: JSON.stringify(data) } : null)
+      // if FormData we set body: data else JSON stringify(data) & we don't set body when no data
+      ...(gotData ? { body: !formData ? JSON.stringify(data) : data } : null)
     }))
     const res = await response.json()
+    // logout user when no token is found on the BE
     if (res.status === 440) return await logout()
+    // display all error messages
     if (res.status >= 400) {
       return browser && notifications.push(res.message)
     } else {
@@ -30,6 +33,7 @@ export const api = async (method, path, data) => {
 
   }catch (err){
     if (err && err instanceof Error) {
+      // server error
       return browser && notifications.push('Something went wrong. Please try later.')
     } else {
       throw err
