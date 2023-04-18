@@ -1,6 +1,6 @@
 export function isRequire (str) {
   if (str) {
-    return str !== ''
+    return typeof str === 'string' && str !== '';
   }
 }
 

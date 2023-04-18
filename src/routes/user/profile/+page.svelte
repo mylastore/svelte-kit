@@ -1,6 +1,6 @@
 <script>
   import timeAgo from '$lib/utils/timeAgo.js'
-  import {isEmail, isPassword, isUrl, isRequire} from '$lib/utils/validation.js'
+  import {isRequire} from '$lib/utils/validation.js'
   import Input from '$lib/Input.svelte'
   import {logout} from '$lib/utils/auth.js'
   import {onMount} from 'svelte'
@@ -49,10 +49,9 @@
     await getUser()
   })
 
-  $: emailValid = isEmail(email)
+  $: emailValid = isRequire(email)
   $: nameRequired = isRequire(name)
-  $: passwordValid = isPassword(password)
-  $: websiteValid = isUrl(website)
+  $: passwordValid = isRequire(password)
   $: passwordConfirmValid = password === passwordConfirmation
   $: passwordFormIsValid = passwordValid && passwordConfirmValid
   $: formIsValid = emailValid && nameRequired
@@ -203,8 +202,6 @@
                 <Input
                     id="website"
                     label="Website"
-                    valid={websiteValid}
-                    validityMessage="Website URL is not valid"
                     value={website}
                     on:input={(event) => (website = event.target.value)}
                 />
