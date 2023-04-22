@@ -53,9 +53,9 @@
         <h1 class="card-header-title">User Profile</h1>
       </div>
       <div class="card-body">
-        <img class="center avatar" src={userAvatar} alt="username image"/>
+        <img class="center avatar" src={userAvatar} width='100' height='100' alt="username image"/>
         <br/>
-        <div class="profile">
+        <div class="profile mt-3">
           {#if name}<p><b>Name: </b> <span>{name}</span></p>{/if}
           {#if userGender}<p><b>Gender: </b> <span>{userGender}</span></p>{/if}
           {#if userLocation}<p><b>Location: </b> <span>{userLocation}</span></p>{/if}
