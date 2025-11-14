@@ -30,9 +30,6 @@ Now head over to your favorite browser and open up `localhost:3001` and you are 
 
 ## IMPORTANT! Start the [API](https://github.com/mylastore/koa-blog-api) repository and follow the instructions on how to seed the sample users data
 
-Login as ADMIN me@me.com and Password1
-
-Login as customer me1@me.com Password1
 
 ## License
 
