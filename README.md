@@ -5,7 +5,7 @@ Sveltekit template - inspired by [Hackathon Starter](https://hackathon-starter.w
 Koa API with authentication, refresh token, password reset - repo can be found here [koa-api](https://github.com/mylastore/koa-blog-api)
 
 ## DEMO
-[Demo App](https://sveltekit.mylastore.com/)
+Work in proggress..
 
 ## Included
 
